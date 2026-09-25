@@ -155,52 +155,77 @@
   }
   #card-page.active { display: flex; }
 
-  /* گل‌های تزئینی گوشه‌ها */
-  .corner-decoration {
-    position: absolute;
-    width: 120px;
-    height: 120px;
+  /* کادر طلایی دور کل کارت */
+  .gold-frame {
+    position: fixed;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 1px solid var(--gold);
+    border-radius: 12px;
     pointer-events: none;
-    z-index: 5;
-    opacity: 0.85;
+    z-index: 50;
+    max-width: 464px;
+    margin: 0 auto;
   }
-  .corner-decoration.top-right { top: 10px; right: 10px; }
-  .corner-decoration.top-left { top: 10px; left: 10px; transform: scaleX(-1); }
-  .corner-decoration.bottom-right { bottom: 10px; right: 10px; transform: scaleY(-1); }
-  .corner-decoration.bottom-left { bottom: 10px; left: 10px; transform: scale(-1,-1); }
 
-  /* اویزهای مروارید */
-  .pearl-hanging {
+  .gold-frame::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(184,148,90,0.35);
+    border-radius: 8px;
+  }
+
+  /* مرواریدهای تزئینی در کل صفحه */
+  .pearls-layer {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  /* مروارید آویز از بالا */
+  .pearl-string-deco {
     position: absolute;
     top: 0;
-    width: 30px;
-    height: 200px;
-    z-index: 4;
-    pointer-events: none;
+    width: 2px;
+    height: 180px;
+    background: linear-gradient(180deg, rgba(184,148,90,0.5), transparent);
+    z-index: 1;
   }
-  .pearl-hanging.left { left: 15px; }
-  .pearl-hanging.right { right: 15px; }
+
+  .pearl-string-deco .pearl {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
   .pearl {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #fff, #f5ede0 50%, #d4b878);
-    box-shadow: 0 1px 3px rgba(107,79,42,0.2), inset -1px -1px 2px rgba(184,148,90,0.4);
+    box-shadow: 0 1px 3px rgba(107,79,42,0.25), inset -1px -1px 2px rgba(184,148,90,0.4);
+    display: block;
   }
 
-  .pearl-string {
+  .pearl.small { width: 6px; height: 6px; }
+  .pearl.big { width: 12px; height: 12px; }
+
+  /* گل‌های تزئینی گوشه‌ها */
+  .corner-flower {
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(184,148,90,0.4), transparent);
+    width: 100px;
+    height: 100px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.9;
   }
+
+  .corner-flower.tr { top: 15px; right: 15px; }
+  .corner-flower.tl { top: 15px; left: 15px; transform: scaleX(-1); }
+  .corner-flower.br { bottom: 15px; right: 15px; transform: scaleY(-1); }
+  .corner-flower.bl { bottom: 15px; left: 15px; transform: scale(-1,-1); }
 
   /* هیرو */
   .hero {
@@ -217,7 +242,7 @@
 
   .hero-photo {
     width: 100%;
-    height: 62vh;
+    height: 60vh;
     position: relative;
     overflow: hidden;
     opacity: 0;
@@ -236,11 +261,11 @@
   @keyframes fadeIn { to { opacity: 1; } }
 
   .names-section {
-    padding: 20px 24px 40px;
+    padding: 15px 24px 30px;
     text-align: center;
     position: relative;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     margin-top: -40px;
   }
 
@@ -274,20 +299,20 @@
 
   .family .b { color: var(--gold-dark); }
 
-  /* شاخه‌های زیتون */
+  /* شاخه‌های زیتون با مروارید */
   .olive-branches {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 24px;
+    padding: 25px 30px;
     opacity: 0;
     animation: fadeIn 1.5s 2s forwards;
     position: relative;
   }
 
   .olive-branch {
-    width: 90px;
-    height: 40px;
+    width: 100px;
+    height: 45px;
     position: relative;
   }
 
@@ -320,53 +345,64 @@
   .olive-branch.left .olive-leaf:nth-child(1) { left: 15px; transform: translateY(-50%) rotate(-25deg); }
   .olive-branch.left .olive-leaf:nth-child(2) { left: 38px; transform: translateY(-50%) rotate(25deg); }
   .olive-branch.left .olive-leaf:nth-child(3) { left: 60px; transform: translateY(-50%) rotate(-25deg); }
+  .olive-branch.left .olive-leaf:nth-child(4) { left: 80px; transform: translateY(-50%) rotate(25deg); }
 
   .olive-branch.right .olive-leaf:nth-child(1) { right: 15px; transform: translateY(-50%) rotate(25deg); }
   .olive-branch.right .olive-leaf:nth-child(2) { right: 38px; transform: translateY(-50%) rotate(-25deg); }
   .olive-branch.right .olive-leaf:nth-child(3) { right: 60px; transform: translateY(-50%) rotate(25deg); }
+  .olive-branch.right .olive-leaf:nth-child(4) { right: 80px; transform: translateY(-50%) rotate(-25deg); }
 
-  /* گل‌های ظریف تزئینی */
-  .flower-decoration {
+  /* بخش‌های با گل‌آرایی */
+  .section-decorated {
+    position: relative;
+    padding: 45px 30px;
+    z-index: 2;
+  }
+
+  /* گل‌های ظریف کنار هر بخش */
+  .section-flower {
     position: absolute;
+    width: 60px;
+    height: 60px;
+    opacity: 0.55;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.35;
   }
+
+  .section-flower.top-right { top: 5px; right: 5px; }
+  .section-flower.top-left { top: 5px; left: 5px; transform: scaleX(-1); }
+  .section-flower.bottom-right { bottom: 5px; right: 5px; transform: scaleY(-1); }
+  .section-flower.bottom-left { bottom: 5px; left: 5px; transform: scale(-1,-1); }
 
   /* شعر */
-  .poem-section {
-    padding: 40px 30px 30px;
-    text-align: center;
-    position: relative;
-  }
-
   .poem {
     font-family: 'Gulzar', serif;
     font-size: 26px;
     line-height: 2.4;
     color: var(--brown);
     padding: 25px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
   }
 
   /* دعوت */
-  .invite-section {
-    padding: 20px 30px 50px;
-    text-align: center;
-    position: relative;
-  }
-
   .invite-text {
     font-family: 'Gulzar', serif;
     font-size: 26px;
     line-height: 2.3;
     color: var(--brown);
+    text-align: center;
+    position: relative;
+    z-index: 2;
   }
 
   /* کادر قوسی مراسم */
   .info-section {
     position: relative;
-    padding: 70px 30px 60px;
+    padding: 80px 30px 70px;
     margin: 30px 20px 40px;
+    z-index: 2;
   }
 
   .info-section::before,
@@ -375,8 +411,8 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 50px;
-    border: 1px solid var(--gold);
+    height: 55px;
+    border: 1.5px solid var(--gold);
     border-radius: 50%;
   }
 
@@ -397,21 +433,33 @@
   /* گل‌های تزئینی روی قوس */
   .arch-flower {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    z-index: 2;
+    width: 36px;
+    height: 36px;
+    z-index: 3;
   }
 
   .arch-flower.top-center {
-    top: -15px;
+    top: -18px;
     left: 50%;
     transform: translateX(-50%);
   }
 
   .arch-flower.bottom-center {
-    bottom: -15px;
+    bottom: -18px;
     left: 50%;
     transform: translateX(-50%) scaleY(-1);
+  }
+
+  .arch-flower.top-left {
+    top: -10px;
+    left: 15%;
+    transform: scale(0.75);
+  }
+
+  .arch-flower.top-right {
+    top: -10px;
+    right: 15%;
+    transform: scale(0.75);
   }
 
   .arch-flower svg {
@@ -426,7 +474,7 @@
     color: var(--brown);
     text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   .info-content .gold {
@@ -435,27 +483,39 @@
 
   .info-content .address {
     display: block;
-    margin-top: 20px;
+    margin-top: 22px;
     font-size: 18px;
     line-height: 2;
     color: var(--gold-dark);
     padding: 0 10px;
-    opacity: 0.95;
+    position: relative;
   }
 
   .info-content .address::before {
-    content: '✦';
+    content: '✦ ✦ ✦';
     display: block;
     color: var(--gold);
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 11px;
+    margin-bottom: 10px;
     font-family: 'Vazirmatn', sans-serif;
+    letter-spacing: 8px;
+  }
+
+  .info-content .address::after {
+    content: '✦ ✦ ✦';
+    display: block;
+    color: var(--gold);
+    font-size: 11px;
+    margin-top: 10px;
+    font-family: 'Vazirmatn', sans-serif;
+    letter-spacing: 8px;
   }
 
   /* شمارش معکوس */
   .countdown-section {
-    padding: 40px 30px;
+    padding: 45px 30px;
     text-align: center;
+    position: relative;
   }
 
   .countdown-title {
@@ -473,11 +533,21 @@
   }
 
   .cd-box {
-    background: rgba(184,148,90,0.1);
-    border: 1px solid rgba(184,148,90,0.4);
+    background: rgba(184,148,90,0.12);
+    border: 1px solid rgba(184,148,90,0.45);
     border-radius: 10px;
     padding: 14px 10px;
     min-width: 68px;
+    position: relative;
+  }
+
+  .cd-box::before {
+    content: '';
+    position: absolute;
+    top: 4px; left: 4px; right: 4px; bottom: 4px;
+    border: 1px solid rgba(184,148,90,0.2);
+    border-radius: 6px;
+    pointer-events: none;
   }
 
   .cd-num {
@@ -486,18 +556,21 @@
     font-size: 26px;
     color: var(--brown);
     line-height: 1;
+    position: relative;
   }
 
   .cd-label {
     font-size: 11px;
     color: var(--gold-dark);
     margin-top: 6px;
+    position: relative;
   }
 
   /* دکمه مسیریابی */
   .map-section {
     padding: 20px 30px 50px;
     text-align: center;
+    position: relative;
   }
 
   .btn-gold {
@@ -511,9 +584,11 @@
     text-decoration: none;
     background: linear-gradient(135deg, #d4b878, #b8945a);
     color: var(--white);
-    box-shadow: 0 8px 24px rgba(184,148,90,0.4);
+    box-shadow: 0 8px 24px rgba(184,148,90,0.45);
     font-family: 'Vazirmatn', sans-serif;
     transition: transform 0.2s;
+    position: relative;
+    z-index: 2;
   }
 
   .btn-gold:active { transform: scale(0.96); }
@@ -522,12 +597,15 @@
   .footer {
     padding: 40px 30px 120px;
     text-align: center;
+    position: relative;
   }
 
   .footer-heart {
     font-size: 32px;
     color: var(--gold);
     animation: heartBeat 1.5s infinite;
+    position: relative;
+    z-index: 2;
   }
 
   @keyframes heartBeat {
@@ -540,14 +618,17 @@
     font-size: 22px;
     color: var(--gold-dark);
     line-height: 1.9;
-    opacity: 0.85;
+    opacity: 0.9;
     margin-top: 15px;
+    position: relative;
+    z-index: 2;
   }
 
+  /* دکمه موسیقی */
   .music-btn {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 25px;
+    left: 25px;
     width: 54px;
     height: 54px;
     border-radius: 50%;
@@ -573,7 +654,7 @@
 
 <div class="app" id="app">
 
-  <!-- ===== صفحه پاکت ===== -->
+  <!-- ===== پاکت ===== -->
   <div class="page active" id="envelope-page">
     <div class="envelope-wrap" onclick="openEnvelope()">
       <div class="envelope" id="envelope">
@@ -589,25 +670,46 @@
   <!-- ===== کارت ===== -->
   <div class="page" id="card-page">
 
-    <!-- اویزهای مروارید -->
-    <div class="pearl-hanging left">
-      <div class="pearl-string"></div>
-      <div class="pearl" style="top: 30px;"></div>
-      <div class="pearl" style="top: 50px;"></div>
-      <div class="pearl" style="top: 70px;"></div>
-      <div class="pearl" style="top: 90px;"></div>
-      <div class="pearl" style="top: 110px;"></div>
-      <div class="pearl" style="top: 130px; width: 10px; height: 10px;"></div>
+    <!-- کادر طلایی دور کارت -->
+    <div class="gold-frame"></div>
+
+    <!-- لایه مرواریدها -->
+    <div class="pearls-layer">
+      <!-- آویزهای مروارید از بالا -->
+      <div class="pearl-string-deco" style="left: 8%;">
+        <span class="pearl" style="top: 20px;"></span>
+        <span class="pearl small" style="top: 40px;"></span>
+        <span class="pearl" style="top: 60px;"></span>
+        <span class="pearl small" style="top: 80px;"></span>
+        <span class="pearl" style="top: 100px;"></span>
+        <span class="pearl small" style="top: 120px;"></span>
+      </div>
+      <div class="pearl-string-deco" style="right: 8%;">
+        <span class="pearl" style="top: 20px;"></span>
+        <span class="pearl small" style="top: 40px;"></span>
+        <span class="pearl" style="top: 60px;"></span>
+        <span class="pearl small" style="top: 80px;"></span>
+        <span class="pearl" style="top: 100px;"></span>
+        <span class="pearl small" style="top: 120px;"></span>
+      </div>
     </div>
 
-    <div class="pearl-hanging right">
-      <div class="pearl-string"></div>
-      <div class="pearl" style="top: 30px;"></div>
-      <div class="pearl" style="top: 50px;"></div>
-      <div class="pearl" style="top: 70px;"></div>
-      <div class="pearl" style="top: 90px;"></div>
-      <div class="pearl" style="top: 110px;"></div>
-      <div class="pearl" style="top: 130px; width: 10px; height: 10px;"></div>
+    <!-- گل‌های گوشه صفحه -->
+    <div class="corner-flower tr">
+      <svg viewBox="0 0 100 100" fill="none">
+        <path d="M50 20 Q55 35 70 40 Q55 45 50 60 Q45 45 30 40 Q45 35 50 20 Z" fill="#d4b878" opacity="0.7"/>
+        <circle cx="50" cy="40" r="6" fill="#b8945a" opacity="0.9"/>
+        <path d="M20 50 Q35 55 40 70 Q45 55 60 50 Q45 45 40 30 Q35 45 20 50 Z" fill="#d4b878" opacity="0.6" transform="translate(20,-10) scale(0.6)"/>
+        <circle cx="30" cy="30" r="4" fill="#b8945a" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="corner-flower tl">
+      <svg viewBox="0 0 100 100" fill="none">
+        <path d="M50 20 Q55 35 70 40 Q55 45 50 60 Q45 45 30 40 Q45 35 50 20 Z" fill="#d4b878" opacity="0.7"/>
+        <circle cx="50" cy="40" r="6" fill="#b8945a" opacity="0.9"/>
+        <path d="M20 50 Q35 55 40 70 Q45 55 60 50 Q45 45 40 30 Q35 45 20 50 Z" fill="#d4b878" opacity="0.6" transform="translate(20,-10) scale(0.6)"/>
+        <circle cx="30" cy="30" r="4" fill="#b8945a" opacity="0.8"/>
+      </svg>
     </div>
 
     <!-- هیرو -->
@@ -634,8 +736,10 @@
         <div class="olive-leaf"></div>
         <div class="olive-leaf"></div>
         <div class="olive-leaf"></div>
+        <div class="olive-leaf"></div>
       </div>
       <div class="olive-branch right">
+        <div class="olive-leaf"></div>
         <div class="olive-leaf"></div>
         <div class="olive-leaf"></div>
         <div class="olive-leaf"></div>
@@ -643,7 +747,26 @@
     </div>
 
     <!-- شعر -->
-    <div class="poem-section">
+    <div class="section-decorated">
+      <div class="section-flower top-right">
+        <svg viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="4" fill="#b8945a"/>
+          <ellipse cx="22" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 22 24)"/>
+          <ellipse cx="38" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 38 24)"/>
+          <ellipse cx="22" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 22 36)"/>
+          <ellipse cx="38" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 38 36)"/>
+        </svg>
+      </div>
+      <div class="section-flower bottom-left">
+        <svg viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="4" fill="#b8945a"/>
+          <ellipse cx="22" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 22 24)"/>
+          <ellipse cx="38" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 38 24)"/>
+          <ellipse cx="22" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 22 36)"/>
+          <ellipse cx="38" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 38 36)"/>
+        </svg>
+      </div>
+
       <div class="poem">
         همه عمر برندارم سر از این خمار مستی<br>
         که هنوز من نبودم که تو در دلم نشستی
@@ -651,7 +774,26 @@
     </div>
 
     <!-- دعوت -->
-    <div class="invite-section">
+    <div class="section-decorated">
+      <div class="section-flower top-left">
+        <svg viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="4" fill="#b8945a"/>
+          <ellipse cx="22" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 22 24)"/>
+          <ellipse cx="38" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 38 24)"/>
+          <ellipse cx="22" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 22 36)"/>
+          <ellipse cx="38" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 38 36)"/>
+        </svg>
+      </div>
+      <div class="section-flower bottom-right">
+        <svg viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="4" fill="#b8945a"/>
+          <ellipse cx="22" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 22 24)"/>
+          <ellipse cx="38" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 38 24)"/>
+          <ellipse cx="22" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 22 36)"/>
+          <ellipse cx="38" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 38 36)"/>
+        </svg>
+      </div>
+
       <p class="invite-text">
         به نام خداوند عشق<br>
         شبی که ستاره‌ها برای ما چیده شد<br>
@@ -660,29 +802,46 @@
       </p>
     </div>
 
-    <!-- کادر قوسی مراسم با گل تزئینی -->
+    <!-- کادر قوسی مراسم -->
     <div class="info-section">
-      <!-- گل روی قوس بالا -->
-      <div class="arch-flower top-center">
-        <svg viewBox="0 0 30 30" fill="none">
-          <circle cx="15" cy="15" r="4" fill="#b8945a" opacity="0.9"/>
-          <circle cx="15" cy="15" r="2" fill="#d4b878"/>
-          <ellipse cx="9" cy="11" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(-30 9 11)"/>
-          <ellipse cx="21" cy="11" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(30 21 11)"/>
-          <ellipse cx="9" cy="19" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(30 9 19)"/>
-          <ellipse cx="21" cy="19" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(-30 21 19)"/>
+      <div class="arch-flower top-left">
+        <svg viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="4" fill="#b8945a" opacity="0.9"/>
+          <circle cx="18" cy="18" r="2" fill="#d4b878"/>
+          <ellipse cx="11" cy="13" rx="3" ry="6" fill="#d4b878" opacity="0.8" transform="rotate(-30 11 13)"/>
+          <ellipse cx="25" cy="13" rx="3" ry="6" fill="#d4b878" opacity="0.8" transform="rotate(30 25 13)"/>
+          <ellipse cx="11" cy="23" rx="3" ry="6" fill="#d4b878" opacity="0.8" transform="rotate(30 11 23)"/>
+          <ellipse cx="25" cy="23" rx="3" ry="6" fill="#d4b878" opacity="0.8" transform="rotate(-30 25 23)"/>
         </svg>
       </div>
-
-      <!-- گل روی قوس پایین -->
+      <div class="arch-flower top-right">
+        <svg viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="4" fill="#b8945a" opacity="0.9"/>
+          <circle cx="18" cy="18" r="2" fill="#d4b878"/>
+          <ellipse cx="11" cy="13" rx="3" ry="6" fill="#d4b878" opacity="0.8" transform="rotate(-30 11 13)"/>
+          <ellipse cx="25" cy="13" rx="3" ry="6" fill="#d4b878" opacity="0.8" transform="rotate(30 25 13)"/>
+          <ellipse cx="11" cy="23" rx="3" ry="6" fill="#d4b878" opacity="0.8" transform="rotate(30 11 23)"/>
+          <ellipse cx="25" cy="23" rx="3" ry="6" fill="#d4b878" opacity="0.8" transform="rotate(-30 25 23)"/>
+        </svg>
+      </div>
+      <div class="arch-flower top-center">
+        <svg viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="5" fill="#b8945a" opacity="0.95"/>
+          <circle cx="18" cy="18" r="2.5" fill="#d4b878"/>
+          <ellipse cx="11" cy="13" rx="3.5" ry="7" fill="#d4b878" opacity="0.85" transform="rotate(-30 11 13)"/>
+          <ellipse cx="25" cy="13" rx="3.5" ry="7" fill="#d4b878" opacity="0.85" transform="rotate(30 25 13)"/>
+          <ellipse cx="11" cy="23" rx="3.5" ry="7" fill="#d4b878" opacity="0.85" transform="rotate(30 11 23)"/>
+          <ellipse cx="25" cy="23" rx="3.5" ry="7" fill="#d4b878" opacity="0.85" transform="rotate(-30 25 23)"/>
+        </svg>
+      </div>
       <div class="arch-flower bottom-center">
-        <svg viewBox="0 0 30 30" fill="none">
-          <circle cx="15" cy="15" r="4" fill="#b8945a" opacity="0.9"/>
-          <circle cx="15" cy="15" r="2" fill="#d4b878"/>
-          <ellipse cx="9" cy="11" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(-30 9 11)"/>
-          <ellipse cx="21" cy="11" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(30 21 11)"/>
-          <ellipse cx="9" cy="19" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(30 9 19)"/>
-          <ellipse cx="21" cy="19" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(-30 21 19)"/>
+        <svg viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="5" fill="#b8945a" opacity="0.95"/>
+          <circle cx="18" cy="18" r="2.5" fill="#d4b878"/>
+          <ellipse cx="11" cy="13" rx="3.5" ry="7" fill="#d4b878" opacity="0.85" transform="rotate(-30 11 13)"/>
+          <ellipse cx="25" cy="13" rx="3.5" ry="7" fill="#d4b878" opacity="0.85" transform="rotate(30 25 13)"/>
+          <ellipse cx="11" cy="23" rx="3.5" ry="7" fill="#d4b878" opacity="0.85" transform="rotate(30 11 23)"/>
+          <ellipse cx="25" cy="23" rx="3.5" ry="7" fill="#d4b878" opacity="0.85" transform="rotate(-30 25 23)"/>
         </svg>
       </div>
 
@@ -701,6 +860,25 @@
 
     <!-- شمارش معکوس -->
     <div class="countdown-section">
+      <div class="section-flower top-left" style="opacity:0.4;">
+        <svg viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="4" fill="#b8945a"/>
+          <ellipse cx="22" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 22 24)"/>
+          <ellipse cx="38" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 38 24)"/>
+          <ellipse cx="22" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 22 36)"/>
+          <ellipse cx="38" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 38 36)"/>
+        </svg>
+      </div>
+      <div class="section-flower top-right" style="opacity:0.4;">
+        <svg viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="30" r="4" fill="#b8945a"/>
+          <ellipse cx="22" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 22 24)"/>
+          <ellipse cx="38" cy="24" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 38 24)"/>
+          <ellipse cx="22" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(30 22 36)"/>
+          <ellipse cx="38" cy="36" rx="4" ry="8" fill="#d4b878" opacity="0.7" transform="rotate(-30 38 36)"/>
+        </svg>
+      </div>
+
       <div class="countdown-title">تا آغاز مراسم</div>
       <div class="countdown" id="countdown">
         <div class="cd-box">
@@ -748,7 +926,7 @@
 </div>
 
 <script>
-  const MUSIC_START_TIME = 26;
+  const MUSIC_START_TIME = 25;
 
   let musicStarted = false;
 
@@ -801,6 +979,27 @@
       btn.classList.remove('playing');
     }
   }
+
+  // قطع موسیقی موقع زدن مسیریابی
+  function stopMusic() {
+    const music = document.getElementById('bg-music');
+    const btn = document.getElementById('music-btn');
+    if (music && !music.paused) {
+      music.pause();
+      btn.classList.remove('playing');
+    }
+  }
+
+  document.getElementById('map-btn').addEventListener('click', function() {
+    stopMusic();
+  });
+
+  // قطع موسیقی وقتی کاربر از صفحه خارج میشه (تب مخفی میشه)
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      stopMusic();
+    }
+  });
 
   const targetDate = new Date('2026-10-08T18:00:00').getTime();
 
