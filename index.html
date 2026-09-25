@@ -98,7 +98,6 @@
   .pearl.large { width: 16px; height: 16px; }
   .pearl.xlarge { width: 22px; height: 22px; }
 
-  /* مرواریدهای آویز */
   .pearl-string {
     position: absolute;
     width: 2px;
@@ -239,7 +238,6 @@
 
   @keyframes fadeIn { to { opacity: 1; } }
 
-  /* قاب بیضی */
   .oval-frame {
     position: relative;
     width: 100%;
@@ -470,7 +468,6 @@
   <!-- ===== پاکت ===== -->
   <div class="page active" id="envelope-page">
 
-    <!-- مرواریدهای تزئینی اطراف پاکت -->
     <div class="pearl xlarge" style="top: 8%; left: 10%;"></div>
     <div class="pearl large" style="top: 12%; left: 18%;"></div>
     <div class="pearl medium" style="top: 18%; left: 6%;"></div>
@@ -503,7 +500,6 @@
   <!-- ===== کارت ===== -->
   <div class="page" id="card-page">
 
-    <!-- مرواریدهای آویز کنار کارت -->
     <div class="pearl-string" style="top: 0; left: 6%; height: 240px;">
       <div class="pearl large" style="top: 30px; left: -6px;"></div>
       <div class="pearl medium" style="top: 70px; left: -5px;"></div>
@@ -520,7 +516,6 @@
       <div class="pearl small" style="top: 200px; left: -4px;"></div>
     </div>
 
-    <!-- مرواریدهای پراکنده اطراف -->
     <div class="pearl xlarge" style="top: 15%; left: 10%;"></div>
     <div class="pearl medium" style="top: 20%; left: 3%;"></div>
     <div class="pearl large" style="top: 26%; left: 15%;"></div>
@@ -543,7 +538,6 @@
     <div class="pearl xlarge" style="bottom: 12%; right: 15%;"></div>
     <div class="pearl small" style="bottom: 24%; right: 5%;"></div>
 
-    <!-- محتوا -->
     <div class="card-content">
 
       <div class="bismillah">به نام پروردگار عشق</div>
@@ -577,7 +571,7 @@
         </div>
         <div class="info-line location-line">
           به صرف <span class="black-bold">شام و شیرینی</span><br>
-          در <span class="black-bold">باغ لوکس طلایی</span>
+          در <span class="black-bold">تالار باغ لوکس طلایی</span>
         </div>
         <div class="info-line address-line">
           جاده قرچک - پاکدشت، بعد از قشلاق<br>
@@ -710,23 +704,15 @@
       const size = sizes[Math.floor(Math.random() * sizes.length)];
       petal.className = 'petal ' + size;
       
-      // موقعیت افقی اولیه تصادفی
       petal.style.left = Math.random() * 100 + '%';
-      
-      // تاخیر شروع تصادفی
       petal.style.animationDelay = (Math.random() * 12) + 's';
-      
-      // مدت زمان سقوط تصادفی (بین 8 تا 16 ثانیه)
       petal.style.animationDuration = (8 + Math.random() * 8) + 's';
-      
-      // چرخش اولیه
       petal.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
       
       document.body.appendChild(petal);
     }
   }
 
-  // شروع گلبرگ‌ها از اول
   startPetals();
 
   const targetDate = new Date('2026-10-08T18:00:00').getTime();
@@ -756,4 +742,4 @@
 </script>
 
 </body>
-</html>
+ </html>
