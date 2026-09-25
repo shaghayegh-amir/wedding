@@ -48,7 +48,6 @@
     to { opacity:1; transform: translateY(0); }
   }
 
-  /* ===== صفحه پاکت ===== */
   #envelope-page {
     background: radial-gradient(circle at center, #fffdf8 0%, #ede4d3 70%);
     position: relative;
@@ -145,7 +144,6 @@
     50% { opacity: 1; }
   }
 
-  /* ===== صفحه اصلی ===== */
   #card-page {
     padding: 0;
     display: none;
@@ -154,7 +152,6 @@
   }
   #card-page.active { display: flex; }
 
-  /* هدر با عکس گل */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -167,7 +164,6 @@
     overflow: hidden;
   }
 
-  /* عکس گل بالای کارت */
   .hero-photo {
     width: 100%;
     height: 62vh;
@@ -186,23 +182,8 @@
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
   }
 
-  /* قوس پایین عکس */
-  .hero-photo::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 110%;
-    height: 60px;
-    background: radial-gradient(ellipse at top, transparent 0%, transparent 50%, var(--cream) 50.5%);
-    border-radius: 50% 50% 0 0;
-    background-color: transparent;
-  }
-
   @keyframes fadeIn { to { opacity: 1; } }
 
-  /* بخش اسم‌ها */
   .names-section {
     padding: 20px 24px 40px;
     text-align: center;
@@ -242,7 +223,6 @@
 
   .family .b { color: var(--gold-dark); }
 
-  /* شاخه‌های زیتون */
   .olive-branches {
     display: flex;
     justify-content: space-between;
@@ -264,7 +244,6 @@
     top: 50%;
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
   }
 
   .olive-branch.left::before {
@@ -284,51 +263,47 @@
     top: 50%;
   }
 
-  .olive-branch.left .olive-leaf {
-    left: 15px;
-    transform: translateY(-50%) rotate(-20deg);
-  }
-  .olive-branch.left .olive-leaf:nth-child(2) {
-    left: 35px;
-    transform: translateY(-50%) rotate(20deg);
-  }
-  .olive-branch.left .olive-leaf:nth-child(3) {
-    left: 55px;
-    transform: translateY(-50%) rotate(-20deg);
+  .olive-branch.left .olive-leaf:nth-child(1) { left: 15px; transform: translateY(-50%) rotate(-20deg); }
+  .olive-branch.left .olive-leaf:nth-child(2) { left: 35px; transform: translateY(-50%) rotate(20deg); }
+  .olive-branch.left .olive-leaf:nth-child(3) { left: 55px; transform: translateY(-50%) rotate(-20deg); }
+
+  .olive-branch.right .olive-leaf:nth-child(1) { right: 15px; transform: translateY(-50%) rotate(20deg); }
+  .olive-branch.right .olive-leaf:nth-child(2) { right: 35px; transform: translateY(-50%) rotate(-20deg); }
+  .olive-branch.right .olive-leaf:nth-child(3) { right: 55px; transform: translateY(-50%) rotate(20deg); }
+
+  /* شعر */
+  .poem-section {
+    padding: 40px 30px 30px;
+    text-align: center;
   }
 
-  .olive-branch.right .olive-leaf {
-    right: 15px;
-    transform: translateY(-50%) rotate(20deg);
-  }
-  .olive-branch.right .olive-leaf:nth-child(2) {
-    right: 35px;
-    transform: translateY(-50%) rotate(-20deg);
-  }
-  .olive-branch.right .olive-leaf:nth-child(3) {
-    right: 55px;
-    transform: translateY(-50%) rotate(20deg);
+  .poem {
+    font-family: 'Gulzar', serif;
+    font-size: 26px;
+    line-height: 2.4;
+    color: var(--brown);
+    padding: 25px 20px;
   }
 
   /* متن دعوت */
   .invite-section {
-    padding: 30px 30px 50px;
+    padding: 20px 30px 50px;
     text-align: center;
   }
 
   .invite-text {
     font-family: 'Gulzar', serif;
     font-size: 26px;
-    line-height: 2.2;
+    line-height: 2.3;
     color: var(--brown);
   }
 
   .invite-names {
     font-family: 'Gulzar', serif;
-    font-size: 32px;
+    font-size: 34px;
     color: var(--gold-dark);
     display: block;
-    margin: 18px 0;
+    margin: 20px 0;
     line-height: 1.8;
   }
 
@@ -339,7 +314,6 @@
     margin: 30px 20px 40px;
   }
 
-  /* قوس بالا و پایین */
   .info-section::before,
   .info-section::after {
     content: '';
@@ -377,7 +351,6 @@
     color: var(--gold-dark);
   }
 
-  /* شمارش معکوس */
   .countdown-section {
     padding: 40px 30px;
     text-align: center;
@@ -419,7 +392,6 @@
     margin-top: 6px;
   }
 
-  /* دکمه مسیریابی */
   .map-section {
     padding: 20px 30px 50px;
     text-align: center;
@@ -443,7 +415,6 @@
 
   .btn-gold:active { transform: scale(0.96); }
 
-  /* پایان */
   .footer {
     padding: 40px 30px 120px;
     text-align: center;
@@ -475,7 +446,6 @@
     opacity: 0.85;
   }
 
-  /* دکمه موسیقی */
   .music-btn {
     position: fixed;
     bottom: 20px;
@@ -505,7 +475,6 @@
 
 <div class="app" id="app">
 
-  <!-- ===== صفحه پاکت ===== -->
   <div class="page active" id="envelope-page">
     <div class="envelope-wrap" onclick="openEnvelope()">
       <div class="envelope" id="envelope">
@@ -518,10 +487,8 @@
     <div class="click-hint" id="hint">برای باز کردن دعوت‌نامه لمس کنید</div>
   </div>
 
-  <!-- ===== صفحه اصلی کارت ===== -->
   <div class="page" id="card-page">
 
-    <!-- هیرو با عکس گل -->
     <div class="hero">
       <div class="hero-photo">
         <img src="https://i.ibb.co/CKd4LFzX/1790339869175.jpg" alt="شقایق و امیر">
@@ -539,7 +506,6 @@
       </div>
     </div>
 
-    <!-- شاخه زیتون -->
     <div class="olive-branches">
       <div class="olive-branch left">
         <div class="olive-leaf"></div>
@@ -553,13 +519,22 @@
       </div>
     </div>
 
-    <!-- متن دعوت -->
+    <!-- شعر -->
+    <div class="poem-section">
+      <div class="poem">
+        همه عمر برندارم سر از این خمار مستی<br>
+        که هنوز من نبودم که تو در دلم نشستی
+      </div>
+    </div>
+
+    <!-- متن دعوت D -->
     <div class="invite-section">
       <p class="invite-text">
-        با قلبی سرشار از شوق و شادمانی<br>
-        به حضور گرم و پر مهر شما عزیزان دعوتیم<br>
+        به نام خداوند عشق<br>
+        شبی که ستاره‌ها برای ما چیده شد<br>
+        آغاز قصه‌ای است که شما راویان آنید<br>
+        با حضورتان، این جشن را جاودانه کنید
         <span class="invite-names">شقایق و امیر</span>
-        تا در کنارمان باشید
       </p>
     </div>
 
@@ -573,7 +548,6 @@
       </div>
     </div>
 
-    <!-- شمارش معکوس -->
     <div class="countdown-section">
       <div class="countdown-title">تا آغاز مراسم</div>
       <div class="countdown" id="countdown">
@@ -596,14 +570,12 @@
       </div>
     </div>
 
-    <!-- دکمه مسیریابی -->
     <div class="map-section">
       <a href="#" class="btn-gold" id="map-btn">
         🗺️ مسیریابی
       </a>
     </div>
 
-    <!-- پایان -->
     <div class="footer">
       <div class="footer-heart">❤️</div>
       <div class="footer-names">شقایق و امیر</div>
@@ -614,15 +586,16 @@
 
   </div>
 
-  <!-- دکمه موسیقی -->
   <button class="music-btn" id="music-btn" onclick="toggleMusic()">♪</button>
   <audio id="bg-music" loop preload="auto">
-    <source src="https://raw.githubusercontent.com/shaghayegh-amir/wedding/25c8ba3fc1077c7eb29abace5a2224dc7c0635ef/Mohsen%20Chavoshi%20-%20Babe%20Delami%20(320).mp3" type="audio/mpeg">
+    <source src="https://raw.githubusercontent.com/shaghayegh-amir/wedding/1c1cef4b5429abb90c3d2d602c409a7f2ee911fd/Arezoomeh.mp3" type="audio/mpeg">
   </audio>
 
 </div>
 
 <script>
+  const MUSIC_START_TIME = 26; // شروع از ثانیه ۲۶
+
   let musicStarted = false;
 
   function openEnvelope() {
@@ -631,13 +604,11 @@
     env.classList.add('open');
     hint.style.opacity = '0';
 
-    // پخش موسیقی از ثانیه ۱۲
     const music = document.getElementById('bg-music');
     music.volume = 0.5;
 
-    // وقتی متادیتا لود شد، از ثانیه ۱۲ شروع کن
     const startMusic = () => {
-      music.currentTime = 12;
+      music.currentTime = MUSIC_START_TIME;
       music.play().then(() => {
         musicStarted = true;
         const btn = document.getElementById('music-btn');
@@ -665,8 +636,8 @@
     const music = document.getElementById('bg-music');
     const btn = document.getElementById('music-btn');
     if (music.paused) {
-      if (!musicStarted || music.currentTime < 12) {
-        music.currentTime = 12;
+      if (!musicStarted || music.currentTime < MUSIC_START_TIME) {
+        music.currentTime = MUSIC_START_TIME;
         musicStarted = true;
       }
       music.play();
@@ -677,7 +648,6 @@
     }
   }
 
-  // شمارش معکوس
   const targetDate = new Date('2026-10-08T18:00:00').getTime();
 
   function updateCountdown() {
@@ -712,4 +682,4 @@
 </script>
 
 </body>
-</html>
+ </html>
