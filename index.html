@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>💍 عروسی شقایق و امیر</title>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  
+  :root{
+    --navy: #0a1f44;
+    --navy-light: #16305e;
+    --royal: #1e4fa3;
+    --sky: #4a7fd4;
+    --ice: #dce7f7;
+    --cream: #f7f4ee;
+    --gold: #c9a86a;
+    --gold-light: #e6cf9a;
+  }
+
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+    background: var(--navy);
+    font-family: 'Vazirmatn', sans-serif;
+    color: var(--cream);
+  }
+
+  .app {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #061534 0%, #0a1f44 50%, #061534 100%);
+  }
+
+  .page {
+    display: none;
+    min-height: 100vh;
+    padding: 40px 24px;
+    animation: fadeUp 1s ease;
+  }
+  .page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(30px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+
+  #envelope-page {
+    background: radial-gradient(circle at center, #16305e 0%, #061534 70%);
+    position: relative;
+  }
+
+  .envelope-wrap {
+    perspective: 1200px;
+    cursor: pointer;
+    animation: floatIn 1.2s ease;
+  }
+
+  @keyframes floatIn {
+    from { opacity:0; transform: scale(0.85) translateY(40px); }
+    to { opacity:1; transform: scale(1) translateY(0); }
+  }
+
+  .envelope {
+    width: 260px;
+    height: 180px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+  }
+
+  .env-body {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #16305e, #0a1f44);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 0 30px rgba(201,168,106,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .env-body::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(201,168,106,0.4);
+    border-radius: 4px;
+  }
+
+  .wax-seal {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #e6cf9a, #c9a86a 60%, #8b6f3a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5), inset -3px -3px 8px rgba(0,0,0,0.3);
+    z-index: 3;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { transform: scale(1); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+    50% { transform: scale(1.06); box-shadow: 0 6px 30px rgba(201,168,106,0.6); }
+  }
+
+  .env-flap {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-top: 90px solid #1e4fa3;
+    transform-origin: top;
+    transition: transform 0.9s cubic-bezier(0.6,-0.28,0.735,0.045);
+    z-index: 4;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+  }
+
+  .envelope.open .env-flap {
+    transform: rotateX(180deg);
+  }
+
+  .click-hint {
+    margin-top: 40px;
+    text-align: center;
+    color: var(--gold-light);
+    font-size: 15px;
+    letter-spacing: 1px;
+    animation: hintPulse 1.8s infinite;
+  }
+
+  @keyframes hintPulse {
+    0%,100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  #card-page {
+    padding: 0;
+    display: none;
+    flex-direction: column;
+  }
+  #card-page.active { display: flex; }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    background: 
+      radial-gradient(circle at 50% 20%, rgba(74,127,212,0.25) 0%, transparent 60%),
+      linear-gradient(180deg, #061534 0%, #0a1f44 100%);
+  }
+
+  .hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    border: 1px solid rgba(201,168,106,0.2);
+    border-radius: 50%;
+  }
+  .hero::before { top: 40px; right: -80px; }
+  .hero::after { bottom: 40px; left: -80px; }
+
+  .bismillah {
+    font-size: 13px;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 1.5s 0.3s forwards;
+  }
+
+  .ornament {
+    color: var(--gold);
+    font-size: 22px;
+    margin: 15px 0;
+    opacity: 0;
+    animation: fadeIn 1.5s 0.6s forwards;
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  .invite-label {
+    font-size: 14px;
+    color: var(--ice);
+    letter-spacing: 4px;
+    opacity: 0;
+    animation: fadeIn 1.5s 0.9s forwards;
+  }
+
+  .names {
+    font-family: 'Lalezar', cursive;
+    font-size: 64px;
+    line-height: 1.1;
+    color: var(--gold-light);
+    margin: 20px 0;
+    text-shadow: 0 0 30px rgba(201,168,106,0.5);
+    opacity: 0;
+    animation: nameGlow 2s 1.2s forwards;
+  }
+
+  @keyframes nameGlow {
+    from { opacity:0; transform: scale(0.9); text-shadow: 0 0 0 rgba(201,168,106,0); }
+    to { opacity:1; transform: scale(1); text-shadow: 0 0 40px rgba(201,168,106,0.6); }
+  }
+
+  .names .amp {
+    display: block;
+    font-size: 40px;
+    color: var(--sky);
+    margin: 5px 0;
+  }
+
+  .family {
+    font-size: 15px;
+    color: var(--ice);
+    opacity: 0;
+    animation: fadeIn 1.5s 1.8s forwards;
+    line-height: 1.8;
+  }
+
+  .hero-photo {
+    width: 100%;
+    max-width: 340px;
+    margin: 35px auto 25px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,106,0.4);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    opacity: 0;
+    animation: fadeIn 1.8s 2.2s forwards;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    display: block;
+  }
+
+  .section {
+    padding: 70px 26px;
+    text-align: center;
+    position: relative;
+  }
+
+  .section-title {
+    font-family: 'Lalezar', cursive;
+    font-size: 32px;
+    color: var(--gold-light);
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '❁';
+    display: block;
+    font-size: 16px;
+    color: var(--sky);
+    margin-top: 6px;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 40px auto;
+  }
+
+  .poem {
+    font-size: 18px;
+    line-height: 2.2;
+    color: var(--ice);
+    font-style: italic;
+    padding: 20px;
+    border-right: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+    border-radius: 4px;
+    background: rgba(30,79,163,0.1);
+  }
+
+  .poem-author {
+    margin-top: 15px;
+    font-size: 13px;
+    color: var(--gold);
+  }
+
+  .invite-text {
+    font-size: 16px;
+    line-height: 2.2;
+    color: var(--ice);
+    text-align: justify;
+    text-align-last: center;
+  }
+
+  .invite-text strong {
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+
+  .countdown {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .cd-box {
+    background: linear-gradient(145deg, rgba(30,79,163,0.35), rgba(10,31,68,0.6));
+    border: 1px solid rgba(201,168,106,0.4);
+    border-radius: 12px;
+    padding: 16px 12px;
+    min-width: 72px;
+    backdrop-filter: blur(6px);
+  }
+
+  .cd-num {
+    font-family: 'Lalezar', cursive;
+    font-size: 34px;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .cd-label {
+    font-size: 12px;
+    color: var(--ice);
+    margin-top: 6px;
+    opacity: 0.8;
+  }
+
+  .info-card {
+    background: linear-gradient(145deg, rgba(30,79,163,0.2), rgba(10,31,68,0.5));
+    border: 1px solid rgba(201,168,106,0.3);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(8px);
+  }
+
+  .info-label {
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .info-value {
+    font-size: 20px;
+    color: var(--cream);
+    font-weight: 700;
+  }
+
+  .info-sub {
+    font-size: 14px;
+    color: var(--ice);
+    opacity: 0.85;
+    margin-top: 4px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, #e6cf9a, #c9a86a);
+    color: #0a1f44;
+    box-shadow: 0 8px 24px rgba(201,168,106,0.4);
+  }
+
+  .btn-gold:active { transform: scale(0.96); }
+
+  .gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 10px 0 20px;
+    scrollbar-width: none;
+  }
+  .gallery::-webkit-scrollbar { display: none; }
+
+  .gallery-item {
+    flex: 0 0 78%;
+    scroll-snap-align: center;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,106,0.35);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    display: block;
+  }
+
+  .music-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e6cf9a, #c9a86a);
+    border: none;
+    color: #0a1f44;
+    font-size: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+  }
+  .music-btn.visible { display: flex; }
+  .music-btn.playing { animation: spin 4s linear infinite; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .footer {
+    padding: 60px 26px 100px;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(201,168,106,0.08));
+  }
+
+  .footer-heart {
+    font-size: 40px;
+    color: var(--gold);
+    animation: heartBeat 1.5s infinite;
+  }
+
+  @keyframes heartBeat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .footer-names {
+    font-family: 'Lalezar', cursive;
+    font-size: 28px;
+    color: var(--gold-light);
+    margin: 14px 0;
+  }
+
+  .footer-note {
+    font-size: 14px;
+    color: var(--ice);
+    opacity: 0.75;
+    line-height: 1.9;
+  }
+
+  .particle {
+    position: absolute;
+    color: rgba(201,168,106,0.4);
+    font-size: 14px;
+    animation: floatP 8s infinite ease-in-out;
+    pointer-events: none;
+  }
+
+  @keyframes floatP {
+    0%,100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+    50% { transform: translateY(-30px) rotate(20deg); opacity: 0.7; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <div class="page active" id="envelope-page">
+    <div class="envelope-wrap" onclick="openEnvelope()">
+      <div class="envelope" id="envelope">
+        <div class="env-body">
+          <div class="wax-seal">💍</div>
+        </div>
+        <div class="env-flap"></div>
+      </div>
+    </div>
+    <div class="click-hint" id="hint">برای باز کردن دعوت‌نامه لمس کنید</div>
+  </div>
+
+  <div class="page" id="card-page">
+
+    <div class="hero">
+      <div class="bismillah">﷽</div>
+      <div class="ornament">❁ ❁ ❁</div>
+      <div class="invite-label">دعوت‌نامه عروسی</div>
+
+      <div class="names">
+        شقایق
+        <span class="amp">&</span>
+        امیر
+      </div>
+
+      <div class="family">
+        با افتخار از خانواده‌های<br>
+        <b style="color:var(--gold-light)">شریفی</b> و <b style="color:var(--gold-light)">رفیعی</b>
+      </div>
+
+      <div class="hero-photo">
+        <img src="https://i.ibb.co/CKd4LFzX/1790339869175.jpg" alt="شقایق و امیر">
+      </div>
+
+      <div class="ornament">✦</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">شعر</div>
+      <div class="poem">
+        همه عمر برندارم سر از این خمار مستی<br>
+        که هنوز من نبودم که تو در دلم نشستی
+        <div class="poem-author">— حافظ</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title">دعوت</div>
+      <p class="invite-text">
+        به نام خدایی که عشق را آفرید<br><br>
+        با قلبی سرشار از شوق و شادمانی، به حضور گرم و پر مهر شما
+        عزیزان دعوتیم تا در کنارمان باشید و لحظه‌های آغازین
+        زندگی مشترکمان را با لبخندتان ماندگار کنید.<br><br>
+        <strong>حضور شما، زیباترین هدیه‌ی ماست.</strong>
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title">شمارش معکوس</div>
+      <div class="countdown" id="countdown">
+        <div class="cd-box">
+          <div class="cd-num" id="cd-days">00</div>
+          <div class="cd-label">روز</div>
+        </div>
+        <div class="cd-box">
+          <div class="cd-num" id="cd-hours">00</div>
+          <div class="cd-label">ساعت</div>
+        </div>
+        <div class="cd-box">
+          <div class="cd-num" id="cd-mins">00</div>
+          <div class="cd-label">دقیقه</div>
+        </div>
+        <div class="cd-box">
+          <div class="cd-num" id="cd-secs">00</div>
+          <div class="cd-label">ثانیه</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title">اطلاعات مراسم</div>
+
+      <div class="info-card">
+        <div class="info-label">📅 تاریخ</div>
+        <div class="info-value">پنج‌شنبه ۱۶ مهر ۱۴۰۵</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-label">🕰️ ساعت</div>
+        <div class="info-value">۱۸:۰۰ الی ۲۴:۰۰</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-label">📍 مکان</div>
+        <div class="info-value">باغ لوکس طلایی</div>
+        <div class="info-sub">آدرس دقیق به‌زودی...</div>
+      </div>
+
+      <a href="#" class="btn btn-gold" id="map-btn" style="margin-top:10px;">
+        🗺️ مسیریابی
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section" style="padding-left:0; padding-right:0;">
+      <div class="section-title">یادگاری‌ها</div>
+      <div class="gallery">
+        <div class="gallery-item"><img src="https://i.ibb.co/CKd4LFzX/1790339869175.jpg" alt="۱"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-heart">❤️</div>
+      <div class="footer-names">شقایق & امیر</div>
+      <div class="footer-note">
+        منتظر حضور گرم شما هستیم<br>
+        ۱۶ مهر ۱۴۰۵ — باغ لوکس طلایی
+      </div>
+    </div>
+
+  </div>
+
+  <button class="music-btn" id="music-btn" onclick="toggleMusic()">♪</button>
+  <audio id="bg-music" loop>
+    <source src="https://files.catbox.moe/jcxh9c.mp3" type="audio/mpeg">
+  </audio>
+
+</div>
+
+<script>
+  function openEnvelope() {
+    const env = document.getElementById('envelope');
+    const hint = document.getElementById('hint');
+    env.classList.add('open');
+    hint.style.opacity = '0';
+
+    const music = document.getElementById('bg-music');
+    music.volume = 0.5;
+    music.play().then(() => {
+      const btn = document.getElementById('music-btn');
+      btn.classList.add('visible', 'playing');
+    }).catch(() => {
+      document.getElementById('music-btn').classList.add('visible');
+    });
+
+    setTimeout(() => {
+      document.getElementById('envelope-page').classList.remove('active');
+      document.getElementById('card-page').classList.add('active');
+      window.scrollTo(0,0);
+    }, 900);
+  }
+
+  function toggleMusic() {
+    const music = document.getElementById('bg-music');
+    const btn = document.getElementById('music-btn');
+    if (music.paused) {
+      music.play();
+      btn.classList.add('playing');
+    } else {
+      music.pause();
+      btn.classList.remove('playing');
+    }
+  }
+
+  const targetDate = new Date('2026-10-08T18:00:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff < 0) {
+      document.getElementById('countdown').innerHTML = '<div style="color:var(--gold-light); font-size:20px;">🎉 مراسم آغاز شده!</div>';
+      return;
+    }
+
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const s = Math.floor((diff % (1000*60)) / 1000);
+
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  document.getElementById('map-btn').addEventListener('click', function(e) {
+    if (this.getAttribute('href') === '#') {
+      e.preventDefault();
+      alert('لوکیشن به‌زودی اضافه می‌شود 💙');
+    }
+  });
+
+  const symbols = ['✦','❁','✧','❋','✿'];
+  for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    p.style.left = Math.random()*100 + '%';
+    p.style.top = Math.random()*100 + '%';
+    p.style.animationDelay = Math.random()*8 + 's';
+    p.style.animationDuration = (6 + Math.random()*6) + 's';
+    p.style.fontSize = (10 + Math.random()*12) + 'px';
+    document.querySelector('.hero').appendChild(p);
+  }
+</script>
+
+</body>
+</html>
