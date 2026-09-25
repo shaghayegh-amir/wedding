@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>💍 عروسی شقایق و امیر</title>
-<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gulzar&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   
@@ -49,6 +49,7 @@
     to { opacity:1; transform: translateY(0); }
   }
 
+  /* ===== صفحه پاکت ===== */
   #envelope-page {
     background: radial-gradient(circle at center, #16305e 0%, #061534 70%);
     position: relative;
@@ -144,6 +145,7 @@
     50% { opacity: 1; }
   }
 
+  /* ===== صفحه اصلی ===== */
   #card-page {
     padding: 0;
     display: none;
@@ -202,12 +204,13 @@
     animation: fadeIn 1.5s 0.9s forwards;
   }
 
+  /* اسم‌ها با فونت نستعلیق */
   .names {
-    font-family: 'Lalezar', cursive;
-    font-size: 64px;
-    line-height: 1.1;
+    font-family: 'Gulzar', serif;
+    font-size: 58px;
+    line-height: 1.4;
     color: var(--gold-light);
-    margin: 20px 0;
+    margin: 25px 0;
     text-shadow: 0 0 30px rgba(201,168,106,0.5);
     opacity: 0;
     animation: nameGlow 2s 1.2s forwards;
@@ -220,17 +223,18 @@
 
   .names .amp {
     display: block;
-    font-size: 40px;
+    font-size: 36px;
     color: var(--sky);
     margin: 5px 0;
   }
 
   .family {
+    font-family: 'Vazirmatn', sans-serif;
     font-size: 15px;
     color: var(--ice);
     opacity: 0;
     animation: fadeIn 1.5s 1.8s forwards;
-    line-height: 1.8;
+    line-height: 2;
   }
 
   .hero-photo {
@@ -257,12 +261,13 @@
   }
 
   .section-title {
-    font-family: 'Lalezar', cursive;
-    font-size: 32px;
+    font-family: 'Gulzar', serif;
+    font-size: 38px;
     color: var(--gold-light);
     margin-bottom: 30px;
     position: relative;
     display: inline-block;
+    line-height: 1.4;
   }
 
   .section-title::after {
@@ -270,7 +275,8 @@
     display: block;
     font-size: 16px;
     color: var(--sky);
-    margin-top: 6px;
+    margin-top: 10px;
+    font-family: 'Vazirmatn', sans-serif;
   }
 
   .divider {
@@ -280,37 +286,41 @@
     margin: 40px auto;
   }
 
+  /* شعر با فونت نستعلیق */
   .poem {
-    font-size: 18px;
-    line-height: 2.2;
+    font-family: 'Gulzar', serif;
+    font-size: 26px;
+    line-height: 2.4;
     color: var(--ice);
-    font-style: italic;
-    padding: 20px;
+    padding: 25px 20px;
     border-right: 2px solid var(--gold);
     border-left: 2px solid var(--gold);
     border-radius: 4px;
     background: rgba(30,79,163,0.1);
   }
 
-  .poem-author {
-    margin-top: 15px;
-    font-size: 13px;
-    color: var(--gold);
+  /* متن دعوت با فونت نستعلیق */
+  .invite-text {
+    font-family: 'Gulzar', serif;
+    font-size: 24px;
+    line-height: 2.4;
+    color: var(--ice);
+    text-align: center;
   }
 
-  .invite-text {
-    font-size: 16px;
-    line-height: 2.2;
-    color: var(--ice);
-    text-align: justify;
-    text-align-last: center;
+  .invite-text .names-inline {
+    color: var(--gold-light);
+    font-size: 32px;
+    display: block;
+    margin: 12px 0;
   }
 
   .invite-text strong {
     color: var(--gold-light);
-    font-weight: 700;
+    font-weight: 400;
   }
 
+  /* شمارش معکوس */
   .countdown {
     display: flex;
     gap: 12px;
@@ -329,8 +339,9 @@
   }
 
   .cd-num {
-    font-family: 'Lalezar', cursive;
-    font-size: 34px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
     color: var(--gold-light);
     line-height: 1;
   }
@@ -342,6 +353,7 @@
     opacity: 0.8;
   }
 
+  /* اطلاعات مراسم */
   .info-card {
     background: linear-gradient(145deg, rgba(30,79,163,0.2), rgba(10,31,68,0.5));
     border: 1px solid rgba(201,168,106,0.3);
@@ -359,9 +371,10 @@
   }
 
   .info-value {
-    font-size: 20px;
+    font-family: 'Gulzar', serif;
+    font-size: 26px;
     color: var(--cream);
-    font-weight: 700;
+    line-height: 1.6;
   }
 
   .info-sub {
@@ -383,7 +396,7 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s;
-    font-family: inherit;
+    font-family: 'Vazirmatn', sans-serif;
   }
 
   .btn-gold {
@@ -394,55 +407,35 @@
 
   .btn-gold:active { transform: scale(0.96); }
 
-  .gallery {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 14px;
-    padding: 10px 0 20px;
-    scrollbar-width: none;
-  }
-  .gallery::-webkit-scrollbar { display: none; }
-
-  .gallery-item {
-    flex: 0 0 78%;
-    scroll-snap-align: center;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(201,168,106,0.35);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-  }
-
-  .gallery-item img {
-    width: 100%;
-    display: block;
-  }
-
+  /* دکمه موسیقی */
   .music-btn {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    width: 52px;
-    height: 52px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     background: linear-gradient(135deg, #e6cf9a, #c9a86a);
     border: none;
     color: #0a1f44;
-    font-size: 20px;
+    font-size: 22px;
     display: none;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     z-index: 100;
+    transition: transform 0.2s;
   }
   .music-btn.visible { display: flex; }
+  .music-btn:active { transform: scale(0.92); }
   .music-btn.playing { animation: spin 4s linear infinite; }
 
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* پایان */
   .footer {
-    padding: 60px 26px 100px;
+    padding: 60px 26px 120px;
     text-align: center;
     background: linear-gradient(180deg, transparent, rgba(201,168,106,0.08));
   }
@@ -459,17 +452,18 @@
   }
 
   .footer-names {
-    font-family: 'Lalezar', cursive;
-    font-size: 28px;
+    font-family: 'Gulzar', serif;
+    font-size: 38px;
     color: var(--gold-light);
-    margin: 14px 0;
+    margin: 18px 0;
+    line-height: 1.5;
   }
 
   .footer-note {
     font-size: 14px;
     color: var(--ice);
     opacity: 0.75;
-    line-height: 1.9;
+    line-height: 2;
   }
 
   .particle {
@@ -491,6 +485,7 @@
 
 <div class="app" id="app">
 
+  <!-- ===== صفحه پاکت ===== -->
   <div class="page active" id="envelope-page">
     <div class="envelope-wrap" onclick="openEnvelope()">
       <div class="envelope" id="envelope">
@@ -503,8 +498,10 @@
     <div class="click-hint" id="hint">برای باز کردن دعوت‌نامه لمس کنید</div>
   </div>
 
+  <!-- ===== صفحه اصلی کارت ===== -->
   <div class="page" id="card-page">
 
+    <!-- هیرو -->
     <div class="hero">
       <div class="bismillah">﷽</div>
       <div class="ornament">❁ ❁ ❁</div>
@@ -512,7 +509,7 @@
 
       <div class="names">
         شقایق
-        <span class="amp">&</span>
+        <span class="amp">و</span>
         امیر
       </div>
 
@@ -528,30 +525,31 @@
       <div class="ornament">✦</div>
     </div>
 
+    <!-- شعر -->
     <div class="section">
-      <div class="section-title">شعر</div>
       <div class="poem">
         همه عمر برندارم سر از این خمار مستی<br>
         که هنوز من نبودم که تو در دلم نشستی
-        <div class="poem-author">— حافظ</div>
       </div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- متن دعوت -->
     <div class="section">
       <div class="section-title">دعوت</div>
       <p class="invite-text">
         به نام خدایی که عشق را آفرید<br><br>
-        با قلبی سرشار از شوق و شادمانی، به حضور گرم و پر مهر شما
-        عزیزان دعوتیم تا در کنارمان باشید و لحظه‌های آغازین
-        زندگی مشترکمان را با لبخندتان ماندگار کنید.<br><br>
-        <strong>حضور شما، زیباترین هدیه‌ی ماست.</strong>
+        با قلبی سرشار از شوق و شادمانی،<br>
+        به حضور گرم و پر مهر شما عزیزان دعوتیم<br>
+        تا در کنارمان باشید<br><br>
+        <strong>حضور شما، زیباترین هدیه‌ی ماست</strong>
       </p>
     </div>
 
     <div class="divider"></div>
 
+    <!-- شمارش معکوس -->
     <div class="section">
       <div class="section-title">شمارش معکوس</div>
       <div class="countdown" id="countdown">
@@ -576,6 +574,7 @@
 
     <div class="divider"></div>
 
+    <!-- اطلاعات مراسم -->
     <div class="section">
       <div class="section-title">اطلاعات مراسم</div>
 
@@ -600,18 +599,10 @@
       </a>
     </div>
 
-    <div class="divider"></div>
-
-    <div class="section" style="padding-left:0; padding-right:0;">
-      <div class="section-title">یادگاری‌ها</div>
-      <div class="gallery">
-        <div class="gallery-item"><img src="https://i.ibb.co/CKd4LFzX/1790339869175.jpg" alt="۱"></div>
-      </div>
-    </div>
-
+    <!-- پایان -->
     <div class="footer">
       <div class="footer-heart">❤️</div>
-      <div class="footer-names">شقایق & امیر</div>
+      <div class="footer-names">شقایق و امیر</div>
       <div class="footer-note">
         منتظر حضور گرم شما هستیم<br>
         ۱۶ مهر ۱۴۰۵ — باغ لوکس طلایی
@@ -620,9 +611,10 @@
 
   </div>
 
+  <!-- دکمه موسیقی -->
   <button class="music-btn" id="music-btn" onclick="toggleMusic()">♪</button>
-  <audio id="bg-music" loop>
-    <source src="https://files.catbox.moe/jcxh9c.mp3" type="audio/mpeg">
+  <audio id="bg-music" loop preload="auto">
+    <source src="https://raw.githubusercontent.com/shaghayegh-amir/wedding/25c8ba3fc1077c7eb29abace5a2224dc7c0635ef/Mohsen%20Chavoshi%20-%20Babe%20Delami%20(320).mp3" type="audio/mpeg">
   </audio>
 
 </div>
@@ -634,12 +626,14 @@
     env.classList.add('open');
     hint.style.opacity = '0';
 
+    // پخش موسیقی
     const music = document.getElementById('bg-music');
     music.volume = 0.5;
     music.play().then(() => {
       const btn = document.getElementById('music-btn');
       btn.classList.add('visible', 'playing');
-    }).catch(() => {
+    }).catch((err) => {
+      console.log('موسیقی پخش نشد:', err);
       document.getElementById('music-btn').classList.add('visible');
     });
 
@@ -662,6 +656,7 @@
     }
   }
 
+  // شمارش معکوس — ۱۴۰۵/۰۷/۱۶ ساعت ۱۸:۰۰ (میلادی: 2026-10-08)
   const targetDate = new Date('2026-10-08T18:00:00').getTime();
 
   function updateCountdown() {
@@ -687,6 +682,7 @@
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
+  // دکمه مسیریابی
   document.getElementById('map-btn').addEventListener('click', function(e) {
     if (this.getAttribute('href') === '#') {
       e.preventDefault();
@@ -694,6 +690,7 @@
     }
   });
 
+  // ذرات تزئینی
   const symbols = ['✦','❁','✧','❋','✿'];
   for (let i = 0; i < 12; i++) {
     const p = document.createElement('div');
@@ -709,4 +706,4 @@
 </script>
 
 </body>
-</html>
+ </html>
