@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>💍 عروسی شقایق و امیر</title>
+<title>💍 عروسی امیر و شقایق</title>
 <link href="https://fonts.googleapis.com/css2?family=Gulzar&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -13,9 +13,11 @@
     --cream-dark: #ede4d3;
     --gold: #b8945a;
     --gold-dark: #8b6f3a;
+    --gold-light: #d4b878;
     --brown: #6b4f2a;
     --brown-dark: #4a3419;
     --white: #fffdf8;
+    --pearl: #f5ede0;
   }
 
   html, body {
@@ -48,6 +50,7 @@
     to { opacity:1; transform: translateY(0); }
   }
 
+  /* ===== پاکت ===== */
   #envelope-page {
     background: radial-gradient(circle at center, #fffdf8 0%, #ede4d3 70%);
     position: relative;
@@ -69,7 +72,6 @@
     height: 180px;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s;
   }
 
   .env-body {
@@ -134,7 +136,6 @@
     text-align: center;
     color: var(--gold-dark);
     font-size: 15px;
-    letter-spacing: 1px;
     animation: hintPulse 1.8s infinite;
     font-family: 'Gulzar', serif;
   }
@@ -144,14 +145,64 @@
     50% { opacity: 1; }
   }
 
+  /* ===== کارت ===== */
   #card-page {
     padding: 0;
     display: none;
     flex-direction: column;
     background: linear-gradient(180deg, #fffdf8 0%, #f7f2e8 40%, #f2ead9 100%);
+    position: relative;
   }
   #card-page.active { display: flex; }
 
+  /* گل‌های تزئینی گوشه‌ها */
+  .corner-decoration {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.85;
+  }
+  .corner-decoration.top-right { top: 10px; right: 10px; }
+  .corner-decoration.top-left { top: 10px; left: 10px; transform: scaleX(-1); }
+  .corner-decoration.bottom-right { bottom: 10px; right: 10px; transform: scaleY(-1); }
+  .corner-decoration.bottom-left { bottom: 10px; left: 10px; transform: scale(-1,-1); }
+
+  /* اویزهای مروارید */
+  .pearl-hanging {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 200px;
+    z-index: 4;
+    pointer-events: none;
+  }
+  .pearl-hanging.left { left: 15px; }
+  .pearl-hanging.right { right: 15px; }
+
+  .pearl {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, #f5ede0 50%, #d4b878);
+    box-shadow: 0 1px 3px rgba(107,79,42,0.2), inset -1px -1px 2px rgba(184,148,90,0.4);
+  }
+
+  .pearl-string {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(184,148,90,0.4), transparent);
+  }
+
+  /* هیرو */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -223,6 +274,7 @@
 
   .family .b { color: var(--gold-dark); }
 
+  /* شاخه‌های زیتون */
   .olive-branches {
     display: flex;
     justify-content: space-between;
@@ -230,11 +282,12 @@
     padding: 20px 24px;
     opacity: 0;
     animation: fadeIn 1.5s 2s forwards;
+    position: relative;
   }
 
   .olive-branch {
-    width: 80px;
-    height: 30px;
+    width: 90px;
+    height: 40px;
     position: relative;
   }
 
@@ -256,25 +309,35 @@
 
   .olive-leaf {
     position: absolute;
-    width: 18px;
-    height: 8px;
-    background: var(--gold);
+    width: 20px;
+    height: 9px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
     border-radius: 50% 0 50% 0;
     top: 50%;
+    box-shadow: 0 1px 2px rgba(107,79,42,0.15);
   }
 
-  .olive-branch.left .olive-leaf:nth-child(1) { left: 15px; transform: translateY(-50%) rotate(-20deg); }
-  .olive-branch.left .olive-leaf:nth-child(2) { left: 35px; transform: translateY(-50%) rotate(20deg); }
-  .olive-branch.left .olive-leaf:nth-child(3) { left: 55px; transform: translateY(-50%) rotate(-20deg); }
+  .olive-branch.left .olive-leaf:nth-child(1) { left: 15px; transform: translateY(-50%) rotate(-25deg); }
+  .olive-branch.left .olive-leaf:nth-child(2) { left: 38px; transform: translateY(-50%) rotate(25deg); }
+  .olive-branch.left .olive-leaf:nth-child(3) { left: 60px; transform: translateY(-50%) rotate(-25deg); }
 
-  .olive-branch.right .olive-leaf:nth-child(1) { right: 15px; transform: translateY(-50%) rotate(20deg); }
-  .olive-branch.right .olive-leaf:nth-child(2) { right: 35px; transform: translateY(-50%) rotate(-20deg); }
-  .olive-branch.right .olive-leaf:nth-child(3) { right: 55px; transform: translateY(-50%) rotate(20deg); }
+  .olive-branch.right .olive-leaf:nth-child(1) { right: 15px; transform: translateY(-50%) rotate(25deg); }
+  .olive-branch.right .olive-leaf:nth-child(2) { right: 38px; transform: translateY(-50%) rotate(-25deg); }
+  .olive-branch.right .olive-leaf:nth-child(3) { right: 60px; transform: translateY(-50%) rotate(25deg); }
+
+  /* گل‌های ظریف تزئینی */
+  .flower-decoration {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.35;
+  }
 
   /* شعر */
   .poem-section {
     padding: 40px 30px 30px;
     text-align: center;
+    position: relative;
   }
 
   .poem {
@@ -285,10 +348,11 @@
     padding: 25px 20px;
   }
 
-  /* متن دعوت */
+  /* دعوت */
   .invite-section {
     padding: 20px 30px 50px;
     text-align: center;
+    position: relative;
   }
 
   .invite-text {
@@ -298,19 +362,10 @@
     color: var(--brown);
   }
 
-  .invite-names {
-    font-family: 'Gulzar', serif;
-    font-size: 34px;
-    color: var(--gold-dark);
-    display: block;
-    margin: 20px 0;
-    line-height: 1.8;
-  }
-
   /* کادر قوسی مراسم */
   .info-section {
     position: relative;
-    padding: 60px 30px 50px;
+    padding: 70px 30px 60px;
     margin: 30px 20px 40px;
   }
 
@@ -320,7 +375,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 40px;
+    height: 50px;
     border: 1px solid var(--gold);
     border-radius: 50%;
   }
@@ -339,18 +394,65 @@
     border-right-color: transparent;
   }
 
+  /* گل‌های تزئینی روی قوس */
+  .arch-flower {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    z-index: 2;
+  }
+
+  .arch-flower.top-center {
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .arch-flower.bottom-center {
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%) scaleY(-1);
+  }
+
+  .arch-flower svg {
+    width: 100%;
+    height: 100%;
+  }
+
   .info-content {
     font-family: 'Gulzar', serif;
     font-size: 24px;
     line-height: 2.2;
     color: var(--brown);
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
 
   .info-content .gold {
     color: var(--gold-dark);
   }
 
+  .info-content .address {
+    display: block;
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 2;
+    color: var(--gold-dark);
+    padding: 0 10px;
+    opacity: 0.95;
+  }
+
+  .info-content .address::before {
+    content: '✦';
+    display: block;
+    color: var(--gold);
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-family: 'Vazirmatn', sans-serif;
+  }
+
+  /* شمارش معکوس */
   .countdown-section {
     padding: 40px 30px;
     text-align: center;
@@ -392,6 +494,7 @@
     margin-top: 6px;
   }
 
+  /* دکمه مسیریابی */
   .map-section {
     padding: 20px 30px 50px;
     text-align: center;
@@ -415,6 +518,7 @@
 
   .btn-gold:active { transform: scale(0.96); }
 
+  /* پایان */
   .footer {
     padding: 40px 30px 120px;
     text-align: center;
@@ -431,19 +535,13 @@
     50% { transform: scale(1.15); }
   }
 
-  .footer-names {
-    font-family: 'Gulzar', serif;
-    font-size: 34px;
-    color: var(--brown);
-    margin: 15px 0;
-  }
-
   .footer-note {
     font-family: 'Gulzar', serif;
-    font-size: 20px;
+    font-size: 22px;
     color: var(--gold-dark);
     line-height: 1.9;
     opacity: 0.85;
+    margin-top: 15px;
   }
 
   .music-btn {
@@ -475,6 +573,7 @@
 
 <div class="app" id="app">
 
+  <!-- ===== صفحه پاکت ===== -->
   <div class="page active" id="envelope-page">
     <div class="envelope-wrap" onclick="openEnvelope()">
       <div class="envelope" id="envelope">
@@ -487,25 +586,49 @@
     <div class="click-hint" id="hint">برای باز کردن دعوت‌نامه لمس کنید</div>
   </div>
 
+  <!-- ===== کارت ===== -->
   <div class="page" id="card-page">
 
+    <!-- اویزهای مروارید -->
+    <div class="pearl-hanging left">
+      <div class="pearl-string"></div>
+      <div class="pearl" style="top: 30px;"></div>
+      <div class="pearl" style="top: 50px;"></div>
+      <div class="pearl" style="top: 70px;"></div>
+      <div class="pearl" style="top: 90px;"></div>
+      <div class="pearl" style="top: 110px;"></div>
+      <div class="pearl" style="top: 130px; width: 10px; height: 10px;"></div>
+    </div>
+
+    <div class="pearl-hanging right">
+      <div class="pearl-string"></div>
+      <div class="pearl" style="top: 30px;"></div>
+      <div class="pearl" style="top: 50px;"></div>
+      <div class="pearl" style="top: 70px;"></div>
+      <div class="pearl" style="top: 90px;"></div>
+      <div class="pearl" style="top: 110px;"></div>
+      <div class="pearl" style="top: 130px; width: 10px; height: 10px;"></div>
+    </div>
+
+    <!-- هیرو -->
     <div class="hero">
       <div class="hero-photo">
-        <img src="https://i.ibb.co/CKd4LFzX/1790339869175.jpg" alt="شقایق و امیر">
+        <img src="https://i.ibb.co/ZRjwSsQ0/1790355796392.jpg" alt="امیر و شقایق">
       </div>
 
       <div class="names-section">
         <div class="names">
-          شقایق <span class="amp">و</span> امیر
+          امیر <span class="amp">و</span> شقایق
         </div>
 
         <div class="family">
           فرزندان عزیز و گرامی<br>
-          <span class="b">خانواده‌های شریفی و رفیعی</span>
+          <span class="b">خانواده‌های رفیعی و شریفی</span>
         </div>
       </div>
     </div>
 
+    <!-- شاخه‌های زیتون -->
     <div class="olive-branches">
       <div class="olive-branch left">
         <div class="olive-leaf"></div>
@@ -527,27 +650,56 @@
       </div>
     </div>
 
-    <!-- متن دعوت D -->
+    <!-- دعوت -->
     <div class="invite-section">
       <p class="invite-text">
         به نام خداوند عشق<br>
         شبی که ستاره‌ها برای ما چیده شد<br>
         آغاز قصه‌ای است که شما راویان آنید<br>
         با حضورتان، این جشن را جاودانه کنید
-        <span class="invite-names">شقایق و امیر</span>
       </p>
     </div>
 
-    <!-- کادر مراسم با قوس -->
+    <!-- کادر قوسی مراسم با گل تزئینی -->
     <div class="info-section">
+      <!-- گل روی قوس بالا -->
+      <div class="arch-flower top-center">
+        <svg viewBox="0 0 30 30" fill="none">
+          <circle cx="15" cy="15" r="4" fill="#b8945a" opacity="0.9"/>
+          <circle cx="15" cy="15" r="2" fill="#d4b878"/>
+          <ellipse cx="9" cy="11" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(-30 9 11)"/>
+          <ellipse cx="21" cy="11" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(30 21 11)"/>
+          <ellipse cx="9" cy="19" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(30 9 19)"/>
+          <ellipse cx="21" cy="19" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(-30 21 19)"/>
+        </svg>
+      </div>
+
+      <!-- گل روی قوس پایین -->
+      <div class="arch-flower bottom-center">
+        <svg viewBox="0 0 30 30" fill="none">
+          <circle cx="15" cy="15" r="4" fill="#b8945a" opacity="0.9"/>
+          <circle cx="15" cy="15" r="2" fill="#d4b878"/>
+          <ellipse cx="9" cy="11" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(-30 9 11)"/>
+          <ellipse cx="21" cy="11" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(30 21 11)"/>
+          <ellipse cx="9" cy="19" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(30 9 19)"/>
+          <ellipse cx="21" cy="19" rx="3" ry="5" fill="#d4b878" opacity="0.8" transform="rotate(-30 21 19)"/>
+        </svg>
+      </div>
+
       <div class="info-content">
         پنجشنبه <span class="gold">۱۶ مهر ۱۴۰۵</span><br>
         از ساعت <span class="gold">۱۸ الی ۲۴</span><br>
-        با صرف شام، پذیرایی می‌شود<br>
+        با صرف <span class="gold">شام و شیرینی</span>، پذیرایی می‌شود<br>
         <span class="gold">در باغ لوکس طلایی</span>
+        <span class="address">
+          جاده قرچک - پاکدشت<br>
+          بعد از قشلاق، نرسیده به جیتو<br>
+          اولین فرعی دست راست
+        </span>
       </div>
     </div>
 
+    <!-- شمارش معکوس -->
     <div class="countdown-section">
       <div class="countdown-title">تا آغاز مراسم</div>
       <div class="countdown" id="countdown">
@@ -570,15 +722,16 @@
       </div>
     </div>
 
+    <!-- دکمه مسیریابی -->
     <div class="map-section">
-      <a href="#" class="btn-gold" id="map-btn">
-        🗺️ مسیریابی
+      <a href="https://nshn.ir/rbQdTJVxaXzp" class="btn-gold" id="map-btn" target="_blank">
+        🗺️ مسیریابی با نشان
       </a>
     </div>
 
+    <!-- پایان -->
     <div class="footer">
       <div class="footer-heart">❤️</div>
-      <div class="footer-names">شقایق و امیر</div>
       <div class="footer-note">
         منتظر حضور گرم شما هستیم
       </div>
@@ -586,6 +739,7 @@
 
   </div>
 
+  <!-- دکمه موسیقی -->
   <button class="music-btn" id="music-btn" onclick="toggleMusic()">♪</button>
   <audio id="bg-music" loop preload="auto">
     <source src="https://raw.githubusercontent.com/shaghayegh-amir/wedding/1c1cef4b5429abb90c3d2d602c409a7f2ee911fd/Arezoomeh.mp3" type="audio/mpeg">
@@ -594,7 +748,7 @@
 </div>
 
 <script>
-  const MUSIC_START_TIME = 26; // شروع از ثانیه ۲۶
+  const MUSIC_START_TIME = 26;
 
   let musicStarted = false;
 
@@ -672,13 +826,6 @@
 
   setInterval(updateCountdown, 1000);
   updateCountdown();
-
-  document.getElementById('map-btn').addEventListener('click', function(e) {
-    if (this.getAttribute('href') === '#') {
-      e.preventDefault();
-      alert('لوکیشن به‌زودی اضافه می‌شود 💙');
-    }
-  });
 </script>
 
 </body>
