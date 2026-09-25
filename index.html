@@ -9,22 +9,21 @@
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   
   :root{
-    --navy: #0a1f44;
-    --navy-light: #16305e;
-    --royal: #1e4fa3;
-    --sky: #4a7fd4;
-    --ice: #dce7f7;
-    --cream: #f7f4ee;
-    --gold: #c9a86a;
-    --gold-light: #e6cf9a;
+    --cream: #f7f2e8;
+    --cream-dark: #ede4d3;
+    --gold: #b8945a;
+    --gold-dark: #8b6f3a;
+    --brown: #6b4f2a;
+    --brown-dark: #4a3419;
+    --white: #fffdf8;
   }
 
   html, body {
     height: 100%;
     overflow-x: hidden;
-    background: var(--navy);
+    background: var(--cream);
     font-family: 'Vazirmatn', sans-serif;
-    color: var(--cream);
+    color: var(--brown-dark);
   }
 
   .app {
@@ -33,13 +32,13 @@
     min-height: 100vh;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(180deg, #061534 0%, #0a1f44 50%, #061534 100%);
+    background: linear-gradient(180deg, #fffdf8 0%, #f7f2e8 50%, #ede4d3 100%);
   }
 
   .page {
     display: none;
     min-height: 100vh;
-    padding: 40px 24px;
+    padding: 0;
     animation: fadeUp 1s ease;
   }
   .page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -51,7 +50,7 @@
 
   /* ===== صفحه پاکت ===== */
   #envelope-page {
-    background: radial-gradient(circle at center, #16305e 0%, #061534 70%);
+    background: radial-gradient(circle at center, #fffdf8 0%, #ede4d3 70%);
     position: relative;
   }
 
@@ -77,10 +76,10 @@
   .env-body {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #16305e, #0a1f44);
+    background: linear-gradient(135deg, #fffdf8, #f7f2e8);
     border: 1px solid var(--gold);
     border-radius: 8px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 0 30px rgba(201,168,106,0.15);
+    box-shadow: 0 20px 60px rgba(107,79,42,0.3), inset 0 0 30px rgba(184,148,90,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,7 +90,7 @@
     content: '';
     position: absolute;
     inset: 8px;
-    border: 1px solid rgba(201,168,106,0.4);
+    border: 1px solid rgba(184,148,90,0.5);
     border-radius: 4px;
   }
 
@@ -99,19 +98,19 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #e6cf9a, #c9a86a 60%, #8b6f3a);
+    background: radial-gradient(circle at 35% 30%, #d4b878, #b8945a 60%, #8b6f3a);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 30px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.5), inset -3px -3px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(107,79,42,0.4), inset -3px -3px 8px rgba(107,79,42,0.3);
     z-index: 3;
     animation: pulse 2s infinite;
   }
 
   @keyframes pulse {
-    0%,100% { transform: scale(1); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
-    50% { transform: scale(1.06); box-shadow: 0 6px 30px rgba(201,168,106,0.6); }
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
   }
 
   .env-flap {
@@ -120,11 +119,11 @@
     height: 0;
     border-left: 130px solid transparent;
     border-right: 130px solid transparent;
-    border-top: 90px solid #1e4fa3;
+    border-top: 90px solid #d4b878;
     transform-origin: top;
     transition: transform 0.9s cubic-bezier(0.6,-0.28,0.735,0.045);
     z-index: 4;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    filter: drop-shadow(0 4px 8px rgba(107,79,42,0.3));
   }
 
   .envelope.open .env-flap {
@@ -134,10 +133,11 @@
   .click-hint {
     margin-top: 40px;
     text-align: center;
-    color: var(--gold-light);
+    color: var(--gold-dark);
     font-size: 15px;
     letter-spacing: 1px;
     animation: hintPulse 1.8s infinite;
+    font-family: 'Gulzar', serif;
   }
 
   @keyframes hintPulse {
@@ -150,298 +150,307 @@
     padding: 0;
     display: none;
     flex-direction: column;
+    background: linear-gradient(180deg, #fffdf8 0%, #f7f2e8 40%, #f2ead9 100%);
   }
   #card-page.active { display: flex; }
 
+  /* هدر با عکس گل */
   .hero {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
-    padding: 60px 24px;
+    padding: 0;
     position: relative;
-    background: 
-      radial-gradient(circle at 50% 20%, rgba(74,127,212,0.25) 0%, transparent 60%),
-      linear-gradient(180deg, #061534 0%, #0a1f44 100%);
+    overflow: hidden;
   }
 
-  .hero::before, .hero::after {
-    content: '';
-    position: absolute;
-    width: 200px; height: 200px;
-    border: 1px solid rgba(201,168,106,0.2);
-    border-radius: 50%;
-  }
-  .hero::before { top: 40px; right: -80px; }
-  .hero::after { bottom: 40px; left: -80px; }
-
-  .bismillah {
-    font-size: 13px;
-    color: var(--gold-light);
-    letter-spacing: 3px;
-    margin-bottom: 30px;
-    opacity: 0;
-    animation: fadeIn 1.5s 0.3s forwards;
-  }
-
-  .ornament {
-    color: var(--gold);
-    font-size: 22px;
-    margin: 15px 0;
-    opacity: 0;
-    animation: fadeIn 1.5s 0.6s forwards;
-  }
-
-  @keyframes fadeIn { to { opacity: 1; } }
-
-  .invite-label {
-    font-size: 14px;
-    color: var(--ice);
-    letter-spacing: 4px;
-    opacity: 0;
-    animation: fadeIn 1.5s 0.9s forwards;
-  }
-
-  /* اسم‌ها با فونت نستعلیق */
-  .names {
-    font-family: 'Gulzar', serif;
-    font-size: 58px;
-    line-height: 1.4;
-    color: var(--gold-light);
-    margin: 25px 0;
-    text-shadow: 0 0 30px rgba(201,168,106,0.5);
-    opacity: 0;
-    animation: nameGlow 2s 1.2s forwards;
-  }
-
-  @keyframes nameGlow {
-    from { opacity:0; transform: scale(0.9); text-shadow: 0 0 0 rgba(201,168,106,0); }
-    to { opacity:1; transform: scale(1); text-shadow: 0 0 40px rgba(201,168,106,0.6); }
-  }
-
-  .names .amp {
-    display: block;
-    font-size: 36px;
-    color: var(--sky);
-    margin: 5px 0;
-  }
-
-  .family {
-    font-family: 'Vazirmatn', sans-serif;
-    font-size: 15px;
-    color: var(--ice);
-    opacity: 0;
-    animation: fadeIn 1.5s 1.8s forwards;
-    line-height: 2;
-  }
-
+  /* عکس گل بالای کارت */
   .hero-photo {
     width: 100%;
-    max-width: 340px;
-    margin: 35px auto 25px;
-    border-radius: 14px;
+    height: 62vh;
+    position: relative;
     overflow: hidden;
-    border: 1px solid rgba(201,168,106,0.4);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     opacity: 0;
-    animation: fadeIn 1.8s 2.2s forwards;
+    animation: fadeIn 1.8s 0.3s forwards;
   }
 
   .hero-photo img {
     width: 100%;
-    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
   }
 
-  .section {
-    padding: 70px 26px;
+  /* قوس پایین عکس */
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110%;
+    height: 60px;
+    background: radial-gradient(ellipse at top, transparent 0%, transparent 50%, var(--cream) 50.5%);
+    border-radius: 50% 50% 0 0;
+    background-color: transparent;
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* بخش اسم‌ها */
+  .names-section {
+    padding: 20px 24px 40px;
     text-align: center;
     position: relative;
+    width: 100%;
+    z-index: 2;
+    margin-top: -40px;
   }
 
-  .section-title {
+  .names {
     font-family: 'Gulzar', serif;
-    font-size: 38px;
-    color: var(--gold-light);
-    margin-bottom: 30px;
-    position: relative;
+    font-size: 52px;
+    line-height: 1.5;
+    color: var(--brown);
+    margin: 15px 0;
+    opacity: 0;
+    animation: fadeIn 1.5s 1s forwards;
+  }
+
+  .names .amp {
     display: inline-block;
-    line-height: 1.4;
+    font-size: 32px;
+    color: var(--gold);
+    margin: 0 12px;
+    vertical-align: middle;
   }
 
-  .section-title::after {
-    content: '❁';
-    display: block;
-    font-size: 16px;
-    color: var(--sky);
-    margin-top: 10px;
-    font-family: 'Vazirmatn', sans-serif;
+  .family {
+    font-family: 'Gulzar', serif;
+    font-size: 22px;
+    color: var(--brown);
+    opacity: 0;
+    animation: fadeIn 1.5s 1.5s forwards;
+    line-height: 1.8;
+    margin-top: 15px;
   }
 
-  .divider {
-    width: 60px;
+  .family .b { color: var(--gold-dark); }
+
+  /* شاخه‌های زیتون */
+  .olive-branches {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    opacity: 0;
+    animation: fadeIn 1.5s 2s forwards;
+  }
+
+  .olive-branch {
+    width: 80px;
+    height: 30px;
+    position: relative;
+  }
+
+  .olive-branch::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100%;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 40px auto;
   }
 
-  /* شعر با فونت نستعلیق */
-  .poem {
-    font-family: 'Gulzar', serif;
-    font-size: 26px;
-    line-height: 2.4;
-    color: var(--ice);
-    padding: 25px 20px;
-    border-right: 2px solid var(--gold);
-    border-left: 2px solid var(--gold);
-    border-radius: 4px;
-    background: rgba(30,79,163,0.1);
+  .olive-branch.left::before {
+    background: linear-gradient(90deg, transparent, var(--gold));
   }
 
-  /* متن دعوت با فونت نستعلیق */
-  .invite-text {
-    font-family: 'Gulzar', serif;
-    font-size: 24px;
-    line-height: 2.4;
-    color: var(--ice);
+  .olive-branch.right::before {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .olive-leaf {
+    position: absolute;
+    width: 18px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50% 0 50% 0;
+    top: 50%;
+  }
+
+  .olive-branch.left .olive-leaf {
+    left: 15px;
+    transform: translateY(-50%) rotate(-20deg);
+  }
+  .olive-branch.left .olive-leaf:nth-child(2) {
+    left: 35px;
+    transform: translateY(-50%) rotate(20deg);
+  }
+  .olive-branch.left .olive-leaf:nth-child(3) {
+    left: 55px;
+    transform: translateY(-50%) rotate(-20deg);
+  }
+
+  .olive-branch.right .olive-leaf {
+    right: 15px;
+    transform: translateY(-50%) rotate(20deg);
+  }
+  .olive-branch.right .olive-leaf:nth-child(2) {
+    right: 35px;
+    transform: translateY(-50%) rotate(-20deg);
+  }
+  .olive-branch.right .olive-leaf:nth-child(3) {
+    right: 55px;
+    transform: translateY(-50%) rotate(20deg);
+  }
+
+  /* متن دعوت */
+  .invite-section {
+    padding: 30px 30px 50px;
     text-align: center;
   }
 
-  .invite-text .names-inline {
-    color: var(--gold-light);
-    font-size: 32px;
-    display: block;
-    margin: 12px 0;
+  .invite-text {
+    font-family: 'Gulzar', serif;
+    font-size: 26px;
+    line-height: 2.2;
+    color: var(--brown);
   }
 
-  .invite-text strong {
-    color: var(--gold-light);
-    font-weight: 400;
+  .invite-names {
+    font-family: 'Gulzar', serif;
+    font-size: 32px;
+    color: var(--gold-dark);
+    display: block;
+    margin: 18px 0;
+    line-height: 1.8;
+  }
+
+  /* کادر قوسی مراسم */
+  .info-section {
+    position: relative;
+    padding: 60px 30px 50px;
+    margin: 30px 20px 40px;
+  }
+
+  /* قوس بالا و پایین */
+  .info-section::before,
+  .info-section::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+  }
+
+  .info-section::before {
+    top: 0;
+    border-bottom: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+
+  .info-section::after {
+    bottom: 0;
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+
+  .info-content {
+    font-family: 'Gulzar', serif;
+    font-size: 24px;
+    line-height: 2.2;
+    color: var(--brown);
+    text-align: center;
+  }
+
+  .info-content .gold {
+    color: var(--gold-dark);
   }
 
   /* شمارش معکوس */
+  .countdown-section {
+    padding: 40px 30px;
+    text-align: center;
+  }
+
+  .countdown-title {
+    font-family: 'Gulzar', serif;
+    font-size: 28px;
+    color: var(--gold-dark);
+    margin-bottom: 25px;
+  }
+
   .countdown {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
   }
 
   .cd-box {
-    background: linear-gradient(145deg, rgba(30,79,163,0.35), rgba(10,31,68,0.6));
-    border: 1px solid rgba(201,168,106,0.4);
-    border-radius: 12px;
-    padding: 16px 12px;
-    min-width: 72px;
-    backdrop-filter: blur(6px);
+    background: rgba(184,148,90,0.1);
+    border: 1px solid rgba(184,148,90,0.4);
+    border-radius: 10px;
+    padding: 14px 10px;
+    min-width: 68px;
   }
 
   .cd-num {
     font-family: 'Vazirmatn', sans-serif;
     font-weight: 700;
-    font-size: 30px;
-    color: var(--gold-light);
+    font-size: 26px;
+    color: var(--brown);
     line-height: 1;
   }
 
   .cd-label {
-    font-size: 12px;
-    color: var(--ice);
+    font-size: 11px;
+    color: var(--gold-dark);
     margin-top: 6px;
-    opacity: 0.8;
   }
 
-  /* اطلاعات مراسم */
-  .info-card {
-    background: linear-gradient(145deg, rgba(30,79,163,0.2), rgba(10,31,68,0.5));
-    border: 1px solid rgba(201,168,106,0.3);
-    border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 18px;
-    backdrop-filter: blur(8px);
+  /* دکمه مسیریابی */
+  .map-section {
+    padding: 20px 30px 50px;
+    text-align: center;
   }
 
-  .info-label {
-    font-size: 13px;
-    color: var(--gold);
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-  }
-
-  .info-value {
-    font-family: 'Gulzar', serif;
-    font-size: 26px;
-    color: var(--cream);
-    line-height: 1.6;
-  }
-
-  .info-sub {
-    font-size: 14px;
-    color: var(--ice);
-    opacity: 0.85;
-    margin-top: 4px;
-  }
-
-  .btn {
+  .btn-gold {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 14px 28px;
+    padding: 14px 32px;
     border-radius: 50px;
     font-size: 15px;
     font-weight: 700;
     text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
+    background: linear-gradient(135deg, #d4b878, #b8945a);
+    color: var(--white);
+    box-shadow: 0 8px 24px rgba(184,148,90,0.4);
     font-family: 'Vazirmatn', sans-serif;
-  }
-
-  .btn-gold {
-    background: linear-gradient(135deg, #e6cf9a, #c9a86a);
-    color: #0a1f44;
-    box-shadow: 0 8px 24px rgba(201,168,106,0.4);
+    transition: transform 0.2s;
   }
 
   .btn-gold:active { transform: scale(0.96); }
 
-  /* دکمه موسیقی */
-  .music-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #e6cf9a, #c9a86a);
-    border: none;
-    color: #0a1f44;
-    font-size: 22px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    z-index: 100;
-    transition: transform 0.2s;
-  }
-  .music-btn.visible { display: flex; }
-  .music-btn:active { transform: scale(0.92); }
-  .music-btn.playing { animation: spin 4s linear infinite; }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
-
   /* پایان */
   .footer {
-    padding: 60px 26px 120px;
+    padding: 40px 30px 120px;
     text-align: center;
-    background: linear-gradient(180deg, transparent, rgba(201,168,106,0.08));
   }
 
   .footer-heart {
-    font-size: 40px;
+    font-size: 32px;
     color: var(--gold);
     animation: heartBeat 1.5s infinite;
   }
@@ -453,31 +462,42 @@
 
   .footer-names {
     font-family: 'Gulzar', serif;
-    font-size: 38px;
-    color: var(--gold-light);
-    margin: 18px 0;
-    line-height: 1.5;
+    font-size: 34px;
+    color: var(--brown);
+    margin: 15px 0;
   }
 
   .footer-note {
-    font-size: 14px;
-    color: var(--ice);
-    opacity: 0.75;
-    line-height: 2;
+    font-family: 'Gulzar', serif;
+    font-size: 20px;
+    color: var(--gold-dark);
+    line-height: 1.9;
+    opacity: 0.85;
   }
 
-  .particle {
-    position: absolute;
-    color: rgba(201,168,106,0.4);
-    font-size: 14px;
-    animation: floatP 8s infinite ease-in-out;
-    pointer-events: none;
+  /* دکمه موسیقی */
+  .music-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4b878, #b8945a);
+    border: none;
+    color: var(--white);
+    font-size: 22px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(107,79,42,0.4);
+    z-index: 100;
   }
+  .music-btn.visible { display: flex; }
+  .music-btn.playing { animation: spin 4s linear infinite; }
 
-  @keyframes floatP {
-    0%,100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-    50% { transform: translateY(-30px) rotate(20deg); opacity: 0.7; }
-  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
 </style>
 </head>
@@ -501,57 +521,61 @@
   <!-- ===== صفحه اصلی کارت ===== -->
   <div class="page" id="card-page">
 
-    <!-- هیرو -->
+    <!-- هیرو با عکس گل -->
     <div class="hero">
-      <div class="bismillah">﷽</div>
-      <div class="ornament">❁ ❁ ❁</div>
-      <div class="invite-label">دعوت‌نامه عروسی</div>
-
-      <div class="names">
-        شقایق
-        <span class="amp">و</span>
-        امیر
-      </div>
-
-      <div class="family">
-        با افتخار از خانواده‌های<br>
-        <b style="color:var(--gold-light)">شریفی</b> و <b style="color:var(--gold-light)">رفیعی</b>
-      </div>
-
       <div class="hero-photo">
         <img src="https://i.ibb.co/CKd4LFzX/1790339869175.jpg" alt="شقایق و امیر">
       </div>
 
-      <div class="ornament">✦</div>
-    </div>
+      <div class="names-section">
+        <div class="names">
+          شقایق <span class="amp">و</span> امیر
+        </div>
 
-    <!-- شعر -->
-    <div class="section">
-      <div class="poem">
-        همه عمر برندارم سر از این خمار مستی<br>
-        که هنوز من نبودم که تو در دلم نشستی
+        <div class="family">
+          فرزندان عزیز و گرامی<br>
+          <span class="b">خانواده‌های شریفی و رفیعی</span>
+        </div>
       </div>
     </div>
 
-    <div class="divider"></div>
+    <!-- شاخه زیتون -->
+    <div class="olive-branches">
+      <div class="olive-branch left">
+        <div class="olive-leaf"></div>
+        <div class="olive-leaf"></div>
+        <div class="olive-leaf"></div>
+      </div>
+      <div class="olive-branch right">
+        <div class="olive-leaf"></div>
+        <div class="olive-leaf"></div>
+        <div class="olive-leaf"></div>
+      </div>
+    </div>
 
     <!-- متن دعوت -->
-    <div class="section">
-      <div class="section-title">دعوت</div>
+    <div class="invite-section">
       <p class="invite-text">
-        به نام خدایی که عشق را آفرید<br><br>
-        با قلبی سرشار از شوق و شادمانی،<br>
+        با قلبی سرشار از شوق و شادمانی<br>
         به حضور گرم و پر مهر شما عزیزان دعوتیم<br>
-        تا در کنارمان باشید<br><br>
-        <strong>حضور شما، زیباترین هدیه‌ی ماست</strong>
+        <span class="invite-names">شقایق و امیر</span>
+        تا در کنارمان باشید
       </p>
     </div>
 
-    <div class="divider"></div>
+    <!-- کادر مراسم با قوس -->
+    <div class="info-section">
+      <div class="info-content">
+        پنجشنبه <span class="gold">۱۶ مهر ۱۴۰۵</span><br>
+        از ساعت <span class="gold">۱۸ الی ۲۴</span><br>
+        با صرف شام، پذیرایی می‌شود<br>
+        <span class="gold">در باغ لوکس طلایی</span>
+      </div>
+    </div>
 
     <!-- شمارش معکوس -->
-    <div class="section">
-      <div class="section-title">شمارش معکوس</div>
+    <div class="countdown-section">
+      <div class="countdown-title">تا آغاز مراسم</div>
       <div class="countdown" id="countdown">
         <div class="cd-box">
           <div class="cd-num" id="cd-days">00</div>
@@ -572,29 +596,9 @@
       </div>
     </div>
 
-    <div class="divider"></div>
-
-    <!-- اطلاعات مراسم -->
-    <div class="section">
-      <div class="section-title">اطلاعات مراسم</div>
-
-      <div class="info-card">
-        <div class="info-label">📅 تاریخ</div>
-        <div class="info-value">پنج‌شنبه ۱۶ مهر ۱۴۰۵</div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-label">🕰️ ساعت</div>
-        <div class="info-value">۱۸:۰۰ الی ۲۴:۰۰</div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-label">📍 مکان</div>
-        <div class="info-value">باغ لوکس طلایی</div>
-        <div class="info-sub">آدرس دقیق به‌زودی...</div>
-      </div>
-
-      <a href="#" class="btn btn-gold" id="map-btn" style="margin-top:10px;">
+    <!-- دکمه مسیریابی -->
+    <div class="map-section">
+      <a href="#" class="btn-gold" id="map-btn">
         🗺️ مسیریابی
       </a>
     </div>
@@ -604,8 +608,7 @@
       <div class="footer-heart">❤️</div>
       <div class="footer-names">شقایق و امیر</div>
       <div class="footer-note">
-        منتظر حضور گرم شما هستیم<br>
-        ۱۶ مهر ۱۴۰۵ — باغ لوکس طلایی
+        منتظر حضور گرم شما هستیم
       </div>
     </div>
 
@@ -620,22 +623,36 @@
 </div>
 
 <script>
+  let musicStarted = false;
+
   function openEnvelope() {
     const env = document.getElementById('envelope');
     const hint = document.getElementById('hint');
     env.classList.add('open');
     hint.style.opacity = '0';
 
-    // پخش موسیقی
+    // پخش موسیقی از ثانیه ۱۲
     const music = document.getElementById('bg-music');
     music.volume = 0.5;
-    music.play().then(() => {
-      const btn = document.getElementById('music-btn');
-      btn.classList.add('visible', 'playing');
-    }).catch((err) => {
-      console.log('موسیقی پخش نشد:', err);
-      document.getElementById('music-btn').classList.add('visible');
-    });
+
+    // وقتی متادیتا لود شد، از ثانیه ۱۲ شروع کن
+    const startMusic = () => {
+      music.currentTime = 12;
+      music.play().then(() => {
+        musicStarted = true;
+        const btn = document.getElementById('music-btn');
+        btn.classList.add('visible', 'playing');
+      }).catch((err) => {
+        console.log('موسیقی پخش نشد:', err);
+        document.getElementById('music-btn').classList.add('visible');
+      });
+    };
+
+    if (music.readyState >= 1) {
+      startMusic();
+    } else {
+      music.addEventListener('loadedmetadata', startMusic, { once: true });
+    }
 
     setTimeout(() => {
       document.getElementById('envelope-page').classList.remove('active');
@@ -648,6 +665,10 @@
     const music = document.getElementById('bg-music');
     const btn = document.getElementById('music-btn');
     if (music.paused) {
+      if (!musicStarted || music.currentTime < 12) {
+        music.currentTime = 12;
+        musicStarted = true;
+      }
       music.play();
       btn.classList.add('playing');
     } else {
@@ -656,7 +677,7 @@
     }
   }
 
-  // شمارش معکوس — ۱۴۰۵/۰۷/۱۶ ساعت ۱۸:۰۰ (میلادی: 2026-10-08)
+  // شمارش معکوس
   const targetDate = new Date('2026-10-08T18:00:00').getTime();
 
   function updateCountdown() {
@@ -664,7 +685,7 @@
     const diff = targetDate - now;
 
     if (diff < 0) {
-      document.getElementById('countdown').innerHTML = '<div style="color:var(--gold-light); font-size:20px;">🎉 مراسم آغاز شده!</div>';
+      document.getElementById('countdown').innerHTML = '<div style="color:var(--brown); font-family:Gulzar,serif; font-size:20px;">🎉 مراسم آغاز شده!</div>';
       return;
     }
 
@@ -682,28 +703,13 @@
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // دکمه مسیریابی
   document.getElementById('map-btn').addEventListener('click', function(e) {
     if (this.getAttribute('href') === '#') {
       e.preventDefault();
       alert('لوکیشن به‌زودی اضافه می‌شود 💙');
     }
   });
-
-  // ذرات تزئینی
-  const symbols = ['✦','❁','✧','❋','✿'];
-  for (let i = 0; i < 12; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.textContent = symbols[Math.floor(Math.random()*symbols.length)];
-    p.style.left = Math.random()*100 + '%';
-    p.style.top = Math.random()*100 + '%';
-    p.style.animationDelay = Math.random()*8 + 's';
-    p.style.animationDuration = (6 + Math.random()*6) + 's';
-    p.style.fontSize = (10 + Math.random()*12) + 'px';
-    document.querySelector('.hero').appendChild(p);
-  }
 </script>
 
 </body>
- </html>
+</html>
